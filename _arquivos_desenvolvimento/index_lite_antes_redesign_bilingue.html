@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Thundera IA Lite | Presentation</title>
+    <!-- Web Fonts -->
+    <link href="https://fonts.cdnfonts.com/css/sansation" rel="stylesheet"/>
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&display=swap" rel="stylesheet"/>
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- Base styles -->
+    <link href="style/presentation.css" rel="stylesheet"/>
+    <style>
+        :root {
+            --text-muted: #9AA0A8;
+            --info: #3B82F6;
+            --neutral: #64748B;
+            --surface: rgba(15, 15, 18, 0.85);
+            --accent-ink: #171207;
+
+            --radius-sm: 0.6cqw;
+            --radius-md: 1cqw;
+            --radius-lg: 1.5cqw;
+
+            --fs-display: 4.5cqw;
+            --fs-h2: 4cqw;
+            --fs-title: 1.8cqw;
+            --fs-title-sm: 1.4cqw;
+            --fs-body: 1.3cqw;
+            --fs-body-sm: 1.1cqw;
+            --fs-tag: 1cqw;
+            --fs-small: 0.9cqw;
+        }
+
+        .text-dark { color: var(--accent-ink); }
+        .text-info { color: var(--info); }
+
+        .glass-box {
+            background: linear-gradient(150deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 4cqh 2.5cqw;
+            backdrop-filter: var(--glass-blur);
+            box-shadow: 0 1.5cqh 3cqh rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .glass-box:hover {
+            border-color: rgba(255, 202, 40, 0.2);
+        }
+
+        .box-icon-wrapper {
+            width: 4.5cqw;
+            height: 4.5cqw;
+            border-radius: var(--radius-sm);
+            background: linear-gradient(135deg, rgba(255, 202, 40, 0.15) 0%, rgba(255, 202, 40, 0.05) 100%);
+            border: 1px solid rgba(255, 202, 40, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2cqh;
+            flex-shrink: 0;
+        }
+
+        .box-icon-wrapper-solid {
+            background: var(--primary);
+            border: 1px solid var(--primary);
+            box-shadow: none;
+        }
+        
+        .box-icon-wrapper-info {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(59, 130, 246, 0.05) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .box-icon-wrapper i { font-size: 2.2cqw !important; color: inherit; }
+
+        .highlight { border: 1px solid rgba(255, 202, 40, 0.4); box-shadow: 0 0 3cqh rgba(255, 202, 40, 0.05), inset 0 0 2cqw rgba(255, 202, 40, 0.05); }
+
+        .flex-row { display: flex; flex-direction: row; }
+        .flex-col { display: flex; flex-direction: column; }
+        .items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .justify-center { justify-content: center; }
+        .gap-md { gap: 2cqw; }
+        .gap-lg { gap: 4cqw; }
+
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5cqw; width: 100%; margin-top: 3cqh; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2cqw; width: 100%; margin-top: 3cqh; }
+
+        .section-heading { font-family: 'Sansation', sans-serif; font-size: var(--fs-h2); color: white; font-weight: bold; line-height: 1.2; letter-spacing: -0.02em; }
+        .title-md { font-family: 'Sansation', sans-serif; font-size: var(--fs-title); color: white; font-weight: bold; margin-bottom: 1.5cqh; line-height: 1.3; }
+        .text-desc { font-family: 'Satoshi', sans-serif; font-size: var(--fs-body); color: #E1E2E6; line-height: 1.5; }
+        .tag-primary { font-family: 'Sansation', sans-serif; font-size: var(--fs-tag); letter-spacing: 0.3cqw; text-transform: uppercase; font-weight: 800; color: var(--primary); margin-bottom: 2cqh; display: inline-block; }
+
+        .pill { display: inline-flex; align-items: center; padding: 0.6cqh 1.2cqw; border-radius: 2cqw; font-family: 'Sansation', sans-serif; font-weight: 700; font-size: var(--fs-tag); white-space: nowrap; }
+        .pill-neutral { background: rgba(255, 255, 255, 0.1); color: #fff; }
+        .pill-solid { background: var(--primary); color: var(--accent-ink); }
+        .pill-info { background: rgba(59, 130, 246, 0.1); color: var(--info); border: 1px solid rgba(59, 130, 246, 0.3); }
+
+        .legend-item { display: flex; gap: 1cqw; align-items: flex-start; }
+        .legend-dot { width: 1cqw; height: 1cqw; border-radius: 50%; margin-top: 0.5cqh; flex-shrink: 0; }
+        .legend-dot-accent { background: var(--primary); box-shadow: 0 0 1cqw var(--primary); }
+        .legend-dot-info { background: var(--info); box-shadow: 0 0 1cqw var(--info); }
+        .legend-dot-neutral { background: var(--neutral); }
+        .legend-label { font-family: 'Sansation', sans-serif; font-weight: 700; font-size: var(--fs-title-sm); line-height: 1.2; display: block; }
+        .legend-sub { color: var(--text-muted); font-family: 'Satoshi', sans-serif; font-size: var(--fs-body-sm); }
+
+        .step-number { font-size: 3.5cqw; font-family: 'Sansation', sans-serif; font-weight: 700; margin-bottom: 1.5cqh; line-height: 1; background: linear-gradient(to bottom, #FFF, #555); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .step-number-active { background: linear-gradient(to bottom, #FFCA28, #B38600); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .donut-container { position: relative; width: 15cqw; height: 15cqw; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 4cqw rgba(59, 130, 246, 0.15); transition: transform 0.5s; }
+        .donut-container:hover { transform: scale(1.05); }
+        .donut-inner { width: 10.5cqw; height: 10.5cqw; background: #0A0B0E; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: inset 0 0 3cqw rgba(0,0,0,0.9); }
+
+        .bar-wrap { width: 100%; background: rgba(255,255,255,0.08); border-radius: 0.5cqw; height: 1cqh; margin-top: 1cqh; overflow: hidden; }
+        .bar-fill { height: 100%; border-radius: 0.5cqw; transition: width 1.5s ease-out; }
+        .bar-yellow { background: linear-gradient(90deg, #d4a017, var(--primary)); box-shadow: 0 0 1.5cqw rgba(255,202,40,0.6); }
+        .bar-blue { background: linear-gradient(90deg, #1d4ed8, var(--info)); box-shadow: 0 0 1.5cqw rgba(59,130,246,0.6); }
+        .bar-green { background: linear-gradient(90deg, #10b981, #34d399); box-shadow: 0 0 1.5cqw rgba(16,185,129,0.6); }
+
+        @keyframes spinConic { 100% { transform: rotate(360deg); } }
+
+        .absolute-bottom-left { position: absolute; bottom: 5cqh; left: 5cqw; }
+        .footer-note { font-family: 'Satoshi', sans-serif; color: var(--text-muted); font-size: var(--fs-small); letter-spacing: 0.2cqw; text-transform: uppercase; font-weight: 500; margin: 0; }
+    </style>
+</head>
+<body class="presentation-body">
+    <!-- UI Overlay: Progress Bar -->
+    <div class="progress-bar-container"><div class="progress-bar" id="progress-bar"></div></div>
+    
+    <!-- UI Overlay: Fixed Controls -->
+    <header class="ui-header">
+        <div class="logo">
+            <img alt="Thundera IA" class="logo-white" src="assets/logo_lite.png" style="height: 4.2vh; display: block;"/>
+        </div>
+        <div class="ui-controls">
+            <div class="slide-counter font-satoshi text-muted"><span id="current-slide">01</span> / <span id="total-slides">05</span></div>
+            <button class="btn-icon" id="btn-toggle-eye" title="Ocultar da Apresentação (O)"><i class="ph ph-eye"></i></button>
+            <button class="btn-icon" id="btn-map" title="Abrir Mapa (M)"><i class="ph ph-squares-four"></i></button>
+            <button class="btn-icon" id="btn-fullscreen" title="Tela Cheia (F)"><i class="ph ph-corners-out"></i></button>
+        </div>
+    </header>
+    
+    <div class="presentation-bg"></div>
+    
+    <!-- Slide Map Overlay -->
+    <div class="slide-map-overlay" id="slide-map">
+        <div class="slide-map-header"><h3 class="font-sansation">Visão Geral da Apresentação</h3><button class="btn-icon" id="btn-close-map"><i class="ph ph-x"></i></button></div>
+        <div class="slide-map-grid font-satoshi" id="slide-map-grid"></div>
+    </div>
+
+    <!-- Slides Engine -->
+    <main class="slides-container" id="slides-container">
+        
+        <!-- Slide 01: Capa -->
+        <section class="slide slide-active" data-title="Capa" id="slide-1">
+            <div class="slide-context-bg" style="position: absolute; inset: 0; overflow: hidden; z-index: -2; background: #000;">
+                <!-- Fullscreen Manager Image (Shifted Right) -->
+                <div style="position: absolute; inset: 0; background-image: url('assets/manager_glitch.jpg'); background-size: cover; background-position: right 30%; opacity: 0.8;"></div>
+                <!-- Dark Fade on Left -->
+                <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,10,12,1) 0%, rgba(10,10,12,0.9) 35%, rgba(10,10,12,0.4) 70%, rgba(10,10,12,0) 100%);"></div>
+                <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,10,12,0.8) 0%, transparent 20%, transparent 80%, rgba(10,10,12,0.8) 100%);"></div>
+            </div>
+            
+            <div class="slide-content flex-row" style="justify-content: flex-start; align-items: center; height: 100%; padding-left: 10cqw;">
+                <div class="flex-col" style="align-items: center; text-align: center; max-width: 48cqw;">
+                    <div class="anim-group anim-1" style="margin-bottom: 6cqh;">
+                        <!-- Logo from user (Made much smaller) -->
+                        <img src="assets/logo_lite.png" alt="Thundera IA Lite" style="height: 5cqw; object-fit: contain; filter: drop-shadow(0 2cqh 3cqh rgba(0,0,0,0.8));" />
+                    </div>
+                    
+                    <div class="anim-group anim-2 flex-col" style="gap: 3cqh;">
+                        <h2 class="font-sansation" style="font-size: 4cqw; color: white; font-weight: 900; line-height: 1.2; text-shadow: 0 1cqh 3cqh rgba(0,0,0,0.9);">
+                            SI <span class="text-primary" style="background: rgba(255,202,40,0.05); border-radius: 0.5cqw; padding: 0.2cqh 1cqw; box-shadow: 0 0 2cqw rgba(255,202,40,0.2); border: 1px solid rgba(255,202,40,0.4);">NO</span> LO VES, NO<br>
+                            LO <span class="text-primary" style="background: rgba(255,202,40,0.05); border-radius: 0.5cqw; padding: 0.2cqh 1cqw; box-shadow: 0 0 2cqw rgba(255,202,40,0.2); border: 1px solid rgba(255,202,40,0.4);">CONTROLAS.</span>
+                        </h2>
+                        
+                        <h2 class="font-sansation" style="font-size: 2.2cqw; color: rgba(255,255,255,0.7); font-weight: 400; font-style: italic; line-height: 1.3; text-shadow: 0 1cqh 2cqh rgba(0,0,0,0.8);">
+                            SE VOCÊ <span class="text-primary" style="background: rgba(255,202,40,0.05); border-radius: 0.5cqw; padding: 0.2cqh 1cqw; border: 1px solid rgba(255,202,40,0.3); font-style: normal;">NÃO</span> ENXERGA,<br>
+                            VOCÊ NÃO <span class="text-primary" style="background: rgba(255,202,40,0.05); border-radius: 0.5cqw; padding: 0.2cqh 1cqw; border: 1px solid rgba(255,202,40,0.3); font-style: normal;">CONTROLA.</span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 02: A jornada visível -->
+        <section class="slide" data-title="A Jornada Visível" id="slide-2">
+            <div class="slide-context-bg" style="position: absolute; inset: 0; overflow: hidden; z-index: -2; background: #0A0A0C;">
+                <div style="position: absolute; width: 200%; height: 200%; top: -50%; left: -50%; background-image: linear-gradient(rgba(255, 202, 40, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 202, 40, 0.05) 1px, transparent 1px); background-size: 40px 40px; border-radius: 50%; transform: perspective(800px) rotateX(60deg) scaleY(1.5); box-shadow: inset 0 0 100px #0A0A0C;"></div>
+            </div>
+            
+            <div class="slide-content flow-layout" style="justify-content: center; padding: 0 4cqw;">
+                <div class="anim-group anim-1 text-center w-full">
+                    <span class="tag-primary">A JORNADA VISÍVEL</span>
+                    <h2 class="section-heading">
+                        Saiba para onde o <span class="text-primary">tempo vai.</span>
+                    </h2>
+                </div>
+                
+                <div class="grid-2 anim-group anim-2" style="align-items: stretch; gap: 4cqw;">
+                    <!-- Donut Card -->
+                    <div class="glass-box highlight" style="padding: 4cqh 3cqw; justify-content: flex-start;">
+                        <div class="flex-row justify-between items-center" style="margin-bottom: 3cqh;">
+                            <h4 class="title-md" style="margin-bottom:0;">Jornada de 8 horas</h4>
+                        </div>
+                        <div class="flex-row items-center justify-center gap-md" style="gap: 4cqw; margin-top: 2cqh;">
+                            <div class="donut-container" style="background: conic-gradient(var(--info) 0% 53%, var(--primary) 53% 85%, var(--neutral) 85% 100%);">
+                                <div class="donut-inner">
+                                    <span class="font-sansation font-bold text-info" style="font-size: 3.5cqw; line-height: 1; text-shadow: 0 0 2cqw rgba(59,130,246,0.5);">53%</span>
+                                    <span class="font-satoshi text-muted" style="font-size: 0.9cqw; text-transform: uppercase; letter-spacing: 1px; margin-top: 0.5cqh; text-align: center;">em reuniões</span>
+                                </div>
+                            </div>
+                            <div class="flex-col" style="gap: 2cqh;">
+                                <div class="legend-item">
+                                    <div class="legend-dot legend-dot-info"></div>
+                                    <div class="flex-col">
+                                        <span class="legend-label text-info">Reuniões • 4h15 (53%)</span>
+                                    </div>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-dot legend-dot-accent"></div>
+                                    <div class="flex-col">
+                                        <span class="legend-label text-primary">Tempo ativo • 2h33 (32%)</span>
+                                    </div>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-dot legend-dot-neutral"></div>
+                                    <div class="flex-col">
+                                        <span class="legend-label text-white">Inatividade • 1h12 (15%)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Bars Card -->
+                    <div class="glass-box" style="padding: 4cqh 3cqw; justify-content: flex-start;">
+                        <div class="flex-row justify-between items-center" style="margin-bottom: 3cqh;">
+                            <h4 class="title-md" style="margin-bottom:0;">Aplicativos e sites</h4>
+                        </div>
+                        <div class="flex-col" style="gap: 3cqh; margin-top: 1cqh;">
+                            <div>
+                                <div class="flex-row justify-between" style="margin-bottom: 0.5cqh;">
+                                    <span class="text-white font-sansation font-bold" style="font-size: 1.3cqw;">Microsoft Teams</span>
+                                    <span class="text-info font-sansation font-bold" style="font-size: 1.3cqw;">3h15</span>
+                                </div>
+                                <div class="bar-wrap"><div class="bar-fill bar-blue" style="width: 100%;"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex-row justify-between" style="margin-bottom: 0.5cqh;">
+                                    <span class="text-white font-sansation font-bold" style="font-size: 1.3cqw;">Microsoft Outlook</span>
+                                    <span class="text-primary font-sansation font-bold" style="font-size: 1.3cqw;">1h45</span>
+                                </div>
+                                <div class="bar-wrap"><div class="bar-fill bar-yellow" style="width: 53.85%;"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex-row justify-between" style="margin-bottom: 0.5cqh;">
+                                    <span class="text-white font-sansation font-bold" style="font-size: 1.3cqw;">web.whatsapp.com</span>
+                                    <span class="text-white font-sansation font-bold" style="font-size: 1.3cqw; color: #10b981;">1h20</span>
+                                </div>
+                                <div class="bar-wrap"><div class="bar-fill bar-green" style="width: 41.03%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute-bottom-left">
+                    <p class="footer-note">Dados ilustrativos. Os tempos podem se sobrepor e exigem contexto.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 03: Recursos do Lite -->
+        <section class="slide" data-title="Recursos do Lite" id="slide-3">
+            <div class="slide-context-bg" style="position: absolute; inset: 0; overflow: hidden; z-index: -2; background: #0A0A0C;">
+                <div style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(255, 202, 40, 0.05), #0A0A0C 70%);"></div>
+            </div>
+            
+            <div class="slide-content flow-layout" style="justify-content: center; padding: 0 4cqw;">
+                <div class="anim-group anim-1 text-center w-full">
+                    <span class="tag-primary">RECURSOS DO LITE</span>
+                    <h2 class="section-heading">
+                        Tudo para <span class="text-primary">enxergar e agir.</span>
+                    </h2>
+                </div>
+                
+                <div class="flex-row justify-center anim-group anim-2" style="flex-wrap: wrap; gap: 2cqw; margin-top: 3cqh; max-width: 90cqw; margin-inline: auto;">
+                    <div class="glass-box text-center items-center" style="width: 25cqw; padding: 3cqh 1.5cqw;">
+                        <div class="box-icon-wrapper text-primary"><i class="ph-fill ph-clock"></i></div>
+                        <h3 class="title-md" style="font-size: 1.4cqw; margin-bottom: 1.5cqh;">Horários</h3>
+                        <p class="text-desc" style="font-size: 1.1cqw;">Jornada e desvios.</p>
+                    </div>
+                    <div class="glass-box text-center items-center highlight" style="width: 25cqw; padding: 3cqh 1.5cqw; z-index:10;">
+                        <div class="box-icon-wrapper box-icon-wrapper-solid text-dark"><i class="ph-fill ph-chart-line-up"></i></div>
+                        <h3 class="title-md text-primary" style="font-size: 1.4cqw; margin-bottom: 1.5cqh;">Atividades</h3>
+                        <p class="text-desc" style="font-size: 1.1cqw; color: white;">Aplicativos e sites.</p>
+                    </div>
+                    <div class="glass-box text-center items-center" style="width: 25cqw; padding: 3cqh 1.5cqw;">
+                        <div class="box-icon-wrapper text-primary"><i class="ph-fill ph-users"></i></div>
+                        <h3 class="title-md" style="font-size: 1.4cqw; margin-bottom: 1.5cqh;">Painéis</h3>
+                        <p class="text-desc" style="font-size: 1.1cqw;">Pessoas e equipes.</p>
+                    </div>
+                    <div class="glass-box text-center items-center" style="width: 25cqw; padding: 3cqh 1.5cqw;">
+                        <div class="box-icon-wrapper text-primary"><i class="ph-fill ph-video-camera"></i></div>
+                        <h3 class="title-md" style="font-size: 1.4cqw; margin-bottom: 1.5cqh;">Tela HD</h3>
+                        <p class="text-desc" style="font-size: 1.1cqw;">Gravação para investigar.</p>
+                    </div>
+                    <div class="glass-box text-center items-center" style="width: 25cqw; padding: 3cqh 1.5cqw;">
+                        <div class="box-icon-wrapper text-primary"><i class="ph-fill ph-brain"></i></div>
+                        <h3 class="title-md" style="font-size: 1.4cqw; margin-bottom: 1.5cqh;">Diagnóstico IA</h3>
+                        <p class="text-desc" style="font-size: 1.1cqw;">Oportunidades de ganho.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 04: Recomendações da IA -->
+        <section class="slide" data-title="Recomendações da IA" id="slide-4">
+            <div class="slide-context-bg" style="position: absolute; inset: 0; overflow: hidden; z-index: -2; background: #080808;">
+                <div style="position: absolute; width: 140%; height: 140%; top: -20%; left: -20%; background: conic-gradient(from 180deg at 50% 50%, rgba(255, 202, 40, 0.08) 0deg, transparent 60deg, transparent 300deg, rgba(255, 202, 40, 0.08) 360deg); animation: spinConic 20s linear infinite;"></div>
+                <div style="position: absolute; inset: 0; backdrop-filter: blur(10px); background: radial-gradient(circle, transparent 20%, #080808 90%);"></div>
+            </div>
+            
+            <div class="slide-content flow-layout" style="justify-content: center; padding: 0 6cqw;">
+                <div class="anim-group anim-1 text-center w-full">
+                    <span class="tag-primary">RECOMENDAÇÕES DA IA</span>
+                    <h2 class="section-heading">
+                        O sistema já <span class="text-primary">faz a análise.</span>
+                    </h2>
+                </div>
+                
+                <div class="grid-3 anim-group anim-2">
+                    <div class="glass-box text-center items-center" style="position: relative;">
+                        <div class="box-icon-wrapper text-primary" style="position: absolute; top: 1.5cqh; right: 1.5cqw; margin: 0; width: 3cqw; height: 3cqw; font-size: 1.5cqw; opacity: 0.5; background: transparent; border: none; box-shadow: none;"><i class="ph-fill ph-scan"></i></div>
+                        <div class="step-number">01</div>
+                        <h3 class="title-md">Detecta</h3>
+                        <p class="text-desc">Reuniões ocupam 53% da jornada.</p>
+                    </div>
+                    <div class="glass-box text-center items-center" style="position: relative;">
+                        <div class="box-icon-wrapper text-primary" style="position: absolute; top: 1.5cqh; right: 1.5cqw; margin: 0; width: 3cqw; height: 3cqw; font-size: 1.5cqw; opacity: 0.5; background: transparent; border: none; box-shadow: none;"><i class="ph-fill ph-brain"></i></div>
+                        <div class="step-number">02</div>
+                        <h3 class="title-md">Interpreta</h3>
+                        <p class="text-desc">Sobra menos tempo para o trabalho individual.</p>
+                    </div>
+                    <div class="glass-box text-center items-center highlight" style="position: relative; z-index: 10;">
+                        <div class="box-icon-wrapper text-primary" style="position: absolute; top: 1.5cqh; right: 1.5cqw; margin: 0; width: 3cqw; height: 3cqw; font-size: 1.5cqw; background: transparent; border: none; box-shadow: none;"><i class="ph-fill ph-lightbulb"></i></div>
+                        <div class="step-number step-number-active">03</div>
+                        <h3 class="title-md text-primary">Recomenda</h3>
+                        <p class="text-desc">Revisar reuniões e reservar um bloco de foco.</p>
+                    </div>
+                </div>
+                <div class="absolute-bottom-left">
+                    <p class="footer-note">Exemplo ilustrativo. O gestor valida a recomendação conforme a função.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 05: Próximo passo -->
+        <section class="slide" data-title="Próximo Passo" id="slide-5">
+            <div class="slide-context-bg" style="position: absolute; inset: 0; overflow: hidden; z-index: -2; background: #080808;">
+                <div style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(255, 202, 40, 0.05), #080808 80%);"></div>
+            </div>
+            
+            <div class="slide-content" style="display: flex; flex-direction: column; padding: 0 6cqw;">
+                <div class="flow-layout" style="flex: 1; min-height: 0; justify-content: center;">
+                    <div class="anim-group anim-1 text-center w-full">
+                        <span class="tag-primary">PRÓXIMO PASSO</span>
+                        <h2 class="section-heading">
+                            Descubra sua <span class="text-primary">oportunidade de melhoria.</span>
+                        </h2>
+                        <p class="font-sansation text-white" style="font-size: 1.8cqw; line-height: 1.4; margin: 2cqh auto 4cqh auto; font-weight: 500;">
+                            Onde sua equipe pode recuperar tempo?
+                        </p>
+                    </div>
+
+                    <div class="grid-2 anim-group anim-2" style="max-width: 60cqw; margin: 0 auto; gap: 4cqw;">
+                        <div class="glass-box text-center items-center" style="position: relative;">
+                            <div class="step-number">01</div>
+                            <h3 class="title-md">Veja o painel e o relatório da IA.</h3>
+                        </div>
+                        <div class="glass-box text-center items-center highlight" style="position: relative; z-index: 10;">
+                            <div class="step-number step-number-active">02</div>
+                            <h3 class="title-md text-primary">Defina um piloto com sua equipe.</h3>
+                        </div>
+                    </div>
+
+                    <div class="anim-group anim-3 text-center w-full" style="margin-top: 6cqh;">
+                        <button class="pill pill-solid" style="font-size: 1.5cqw; padding: 1.5cqh 3cqw; border: none; cursor: pointer;">Solicite uma demonstração</button>
+                    </div>
+                </div>
+
+                <div class="anim-group" style="flex-shrink: 0; padding: 2cqh 0 3cqh;">
+                    <p class="footer-note">Converse com nossa equipe no estande.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Side Navigation Triggers -->
+    <div class="nav-hitbox left" id="nav-area-prev"><div class="nav-arrow"><i class="ph ph-caret-left"></i></div></div>
+    <div class="nav-hitbox right" id="nav-area-next"><div class="nav-arrow"><i class="ph ph-caret-right"></i></div></div>
+    
+    <!-- Scripts -->
+    <script src="js/presentation.js"></script>
+</body>
+</html>

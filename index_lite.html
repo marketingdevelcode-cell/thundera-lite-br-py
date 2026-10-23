@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es-PY">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Thundera IA Lite | ES · PT</title>
+    <link href="https://fonts.cdnfonts.com/css/sansation" rel="stylesheet"/>
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&display=swap" rel="stylesheet"/>
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.2"></script>
+    <link href="style/presentation.css" rel="stylesheet"/>
+    <link href="style/lite-deck.css" rel="stylesheet"/>
+</head>
+<body class="presentation-body">
+    <div class="progress-bar-container"><div class="progress-bar" id="progress-bar"></div></div>
+
+    <header class="ui-header">
+        <div class="logo">
+            <img alt="Thundera IA Lite" src="assets/logo_lite.png" style="height: 4.2vh; display: block;"/>
+        </div>
+        <div class="ui-controls">
+            <div class="slide-counter font-satoshi"><span id="current-slide">01</span> / <span id="total-slides">07</span></div>
+            <button class="btn-icon" id="btn-toggle-eye" title="Ocultar diapositiva · Ocultar slide (O)"><i class="ph ph-eye"></i></button>
+            <button class="btn-icon" id="btn-map" title="Mapa (M)"><i class="ph ph-squares-four"></i></button>
+            <button class="btn-icon" id="btn-fullscreen" title="Pantalla completa · Tela cheia (F)"><i class="ph ph-corners-out"></i></button>
+        </div>
+    </header>
+
+    <div class="presentation-bg"></div>
+
+    <div class="slide-map-overlay" id="slide-map">
+        <div class="slide-map-header"><h3 class="font-sansation">Mapa de la presentación · Mapa da apresentação</h3><button class="btn-icon" id="btn-close-map"><i class="ph ph-x"></i></button></div>
+        <div class="slide-map-grid font-satoshi" id="slide-map-grid"></div>
+    </div>
+
+    <main class="slides-container" id="slides-container">
+
+        <!-- 01 · Portada -->
+        <section class="slide slide-active" data-title="Portada · Capa" id="slide-1">
+            <div class="slide-context-bg lt-bg">
+                <div class="lt-floor"></div>
+                <div class="lt-glow" style="width: 55vw; height: 55vw; right: -12vw; top: 10vh; background: rgba(255, 202, 40, 0.07);"></div>
+            </div>
+
+            <div class="slide-content lt lt-cover">
+                <div class="lt-cover-copy">
+                    <div class="anim-group anim-1">
+                        <img alt="Thundera IA Lite" class="lt-cover-logo" src="assets/logo_lite.png"/>
+                    </div>
+                    <h1 class="anim-group anim-2 lt-cover-title" lang="es-PY">Si <mark>no</mark> lo ves,<br/>no lo <mark>controlás.</mark></h1>
+                    <span class="anim-group anim-3 pt lt-cover-pt" lang="pt-BR">Se você não enxerga, você não controla.</span>
+                    <div class="anim-group anim-4 lt-cover-claim">
+                        <span class="es" lang="es-PY">Vea la jornada real de su equipo y reciba recomendaciones con IA.</span>
+                        <span class="pt" lang="pt-BR">Veja a jornada real da sua equipe e receba recomendações com IA.</span>
+                    </div>
+                </div>
+
+                <div class="lt-person lt-person-cover lt-rise" aria-hidden="true">
+                    <div class="lt-person-glow"></div>
+                    <img alt="" src="assets/imagem-homem-capa.png"/>
+                    <div class="lt-scan"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02 · La ilusión de la presencia -->
+        <section class="slide" data-title="La ilusión de la presencia · A ilusão da presença" id="slide-2">
+            <div class="slide-context-bg lt-bg">
+                <div class="lt-dots"></div>
+                <div class="lt-glow" style="width: 60vw; height: 30vw; left: 20vw; top: 35vh; background: rgba(255, 255, 255, 0.03);"></div>
+            </div>
+
+            <div class="slide-content lt lt-stack">
+                <div class="anim-group anim-1">
+                    <div class="lt-kicker"><span lang="es-PY">La ilusión de la presencia</span><span class="k-pt" lang="pt-BR">A ilusão da presença</span></div>
+                    <h2 class="lt-h" lang="es-PY">Presencia <em>no es</em> actividad.</h2>
+                    <span class="pt lt-h-pt" lang="pt-BR">Presença não é atividade.</span>
+                </div>
+
+                <div class="lt-body">
+                    <div class="anim-group anim-2">
+                        <div class="lt-blind-ends">
+                            <div class="lt-end">
+                                <span class="lt-end-time">08:00</span>
+                                <span class="es" lang="es-PY">Llegada</span>
+                                <span class="pt" lang="pt-BR">Chegada</span>
+                            </div>
+                            <div class="lt-end lt-end-right">
+                                <span class="lt-end-time">17:00</span>
+                                <span class="es" lang="es-PY">Salida</span>
+                                <span class="pt" lang="pt-BR">Saída</span>
+                            </div>
+                        </div>
+                        <div class="lt-blind-bar">
+                            <div class="lt-strip" aria-hidden="true">
+                                <i class="seg-tool" style="flex: 40;"></i>
+                                <i class="seg-meet" style="flex: 60;"></i>
+                                <i class="seg-idle" style="flex: 25;"></i>
+                                <i class="seg-web" style="flex: 45;"></i>
+                                <i class="seg-tool" style="flex: 70;"></i>
+                                <i class="seg-idle" style="flex: 60;"></i>
+                                <i class="seg-meet" style="flex: 40;"></i>
+                                <i class="seg-web" style="flex: 30;"></i>
+                                <i class="seg-tool" style="flex: 80;"></i>
+                                <i class="seg-idle" style="flex: 30;"></i>
+                                <i class="seg-tool" style="flex: 60;"></i>
+                            </div>
+                            <div class="lt-blind-veil">
+                                <i class="ph-bold ph-eye-slash" aria-hidden="true"></i>
+                                <div>
+                                    <span class="es" lang="es-PY">¿Qué pasó en estas horas?</span>
+                                    <span class="pt" lang="pt-BR">O que aconteceu nessas horas?</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lt-punch anim-group anim-3">
+                        <span class="es" lang="es-PY">Entre la llegada y la salida, la gestión se hace <em>por percepción.</em></span>
+                        <span class="pt" lang="pt-BR">Entre a chegada e a saída, a gestão é feita por percepção.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03 · Dentro de la jornada -->
+        <section class="slide" data-title="Dentro de la jornada · Dentro da jornada" id="slide-3">
+            <div class="slide-context-bg lt-bg">
+                <div class="lt-lines"></div>
+                <div class="lt-glow" style="width: 60vw; height: 30vw; left: 20vw; top: 35vh; background: rgba(255, 202, 40, 0.05);"></div>
+            </div>
+
+            <div class="slide-content lt lt-stack">
+                <div class="anim-group anim-1">
+                    <div class="lt-kicker"><span lang="es-PY">Dentro de la jornada</span><span class="k-pt" lang="pt-BR">Dentro da jornada</span></div>
+                    <h2 class="lt-h" lang="es-PY">Cada minuto, <em>con contexto.</em></h2>
+                    <span class="pt lt-h-pt" lang="pt-BR">Cada minuto, com contexto.</span>
+                </div>
+
+                <div class="lt-body">
+                    <div class="lt-day lt-reveal anim-group anim-2">
+                        <div class="lt-day-top">
+                            <div class="lt-day-title">
+                                <span class="es" lang="es-PY">Un colaborador, un día</span>
+                                <span class="pt" lang="pt-BR">Um colaborador, um dia</span>
+                            </div>
+                            <div class="lt-meta">
+                                <span class="es" lang="es-PY">Meta diaria <b>8h00</b></span>
+                                <span class="pt" lang="pt-BR">Meta diária</span>
+                            </div>
+                        </div>
+
+                        <div class="lt-axis" aria-hidden="true"><span>08h</span><span>11h</span><span>14h</span><span>17h</span></div>
+                        <div class="lt-strip" role="img" aria-label="Sin registro hasta las 11h29; luego herramientas, sitios web, reuniones e inactividad hasta las 16h48">
+                            <i class="seg-none" style="flex: 209;">
+                                <span class="lt-seg-label"><span class="es" lang="es-PY">Sin registro</span><span class="pt" lang="pt-BR">Sem registro</span></span>
+                            </i>
+                            <i class="seg-tool" style="flex: 25;"></i>
+                            <i class="seg-meet" style="flex: 50;"></i>
+                            <i class="seg-idle" style="flex: 30;"></i>
+                            <i class="seg-web" style="flex: 35;"></i>
+                            <i class="seg-tool" style="flex: 60;"></i>
+                            <i class="seg-tool" style="flex: 18;"></i>
+                            <i class="seg-web" style="flex: 28;"></i>
+                            <i class="seg-idle" style="flex: 22;"></i>
+                            <i class="seg-tool" style="flex: 15;"></i>
+                            <i class="seg-tool" style="flex: 35;"></i>
+                            <i class="seg-none" style="flex: 13;"></i>
+                        </div>
+
+                        <div class="lt-sum anim-group anim-3">
+                            <div class="lt-sum-main">
+                                <div class="lt-donut"><b>55%</b></div>
+                                <div>
+                                    <span class="es" lang="es-PY">Tiempo activo<small>4h26 de la meta de 8h00</small></span>
+                                    <span class="pt" lang="pt-BR">Tempo ativo · 4h26 de 8h00</span>
+                                </div>
+                            </div>
+                            <i class="lt-sum-op" aria-hidden="true">=</i>
+                            <div class="lt-sum-item tool">
+                                <b>2h33</b>
+                                <span class="es" lang="es-PY">Herramientas</span>
+                                <span class="pt" lang="pt-BR">Ferramentas</span>
+                            </div>
+                            <i class="lt-sum-op" aria-hidden="true">+</i>
+                            <div class="lt-sum-item web">
+                                <b>1h03</b>
+                                <span class="es" lang="es-PY">Sitios web</span>
+                                <span class="pt" lang="pt-BR">Sites</span>
+                            </div>
+                            <i class="lt-sum-op" aria-hidden="true">+</i>
+                            <div class="lt-sum-item meet">
+                                <b>0h50</b>
+                                <span class="es" lang="es-PY">Reuniones</span>
+                                <span class="pt" lang="pt-BR">Reuniões</span>
+                            </div>
+                            <div class="lt-sum-item idle">
+                                <b>0h52</b>
+                                <span class="es" lang="es-PY">Inactividad</span>
+                                <span class="pt" lang="pt-BR">Inatividade</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lt-note anim-group anim-4">
+                    <span class="es" lang="es-PY">Datos de demostración de la plataforma. El tiempo activo suma herramientas, sitios web y reuniones.</span>
+                    <span class="pt" lang="pt-BR">Dados de demonstração da plataforma. O tempo ativo soma ferramentas, sites e reuniões.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 04 · Funciones -->
+        <section class="slide" data-title="Funciones · Funções" id="slide-4">
+            <div class="slide-context-bg lt-bg">
+                <div class="lt-dots"></div>
+                <div class="lt-glow" style="width: 45vw; height: 45vw; right: -8vw; top: 5vh; background: rgba(255, 202, 40, 0.08);"></div>
+            </div>
+
+            <div class="slide-content lt lt-stack">
+                <div class="anim-group anim-1">
+                    <div class="lt-kicker"><span lang="es-PY">Lo que entrega el Lite</span><span class="k-pt" lang="pt-BR">O que o Lite entrega</span></div>
+                    <h2 class="lt-h" lang="es-PY">Todo lo que el gestor <em>necesita ver.</em></h2>
+                    <span class="pt lt-h-pt" lang="pt-BR">Tudo o que o gestor precisa ver.</span>
+                </div>
+
+                <div class="lt-body">
+                    <div class="lt-bento anim-group anim-2">
+                        <article class="lt-tile">
+                            <div class="lt-tile-top"><span class="lt-ico"><i class="ph-fill ph-target"></i></span><span class="lt-tile-n">01</span></div>
+                            <div>
+                                <h3 lang="es-PY">Jornada y meta</h3>
+                                <span class="es lt-tile-es" lang="es-PY">Activo e inactivo frente a la meta.</span>
+                                <span class="pt" lang="pt-BR">Jornada e meta · ativo e inativo frente à meta.</span>
+                            </div>
+                        </article>
+                        <article class="lt-tile">
+                            <div class="lt-tile-top"><span class="lt-ico"><i class="ph-fill ph-browsers"></i></span><span class="lt-tile-n">02</span></div>
+                            <div>
+                                <h3 lang="es-PY">Herramientas y sitios</h3>
+                                <span class="es lt-tile-es" lang="es-PY">Dónde se concentra el tiempo activo.</span>
+                                <span class="pt" lang="pt-BR">Ferramentas e sites · onde está o tempo ativo.</span>
+                            </div>
+                        </article>
+                        <article class="lt-tile lt-tile-hero">
+                            <i class="ph-fill ph-brain lt-watermark" aria-hidden="true"></i>
+                            <div class="lt-tile-top"><span class="lt-ico"><i class="ph-fill ph-sparkle"></i></span><span class="lt-tile-n">05</span></div>
+                            <div>
+                                <h3 lang="es-PY">Informe con IA</h3>
+                                <span class="es lt-tile-es" lang="es-PY">Interpreta la jornada y recomienda qué hacer.</span>
+                                <span class="pt" lang="pt-BR">Relatório com IA · interpreta a jornada e recomenda o que fazer.</span>
+                            </div>
+                        </article>
+                        <article class="lt-tile">
+                            <div class="lt-tile-top"><span class="lt-ico"><i class="ph-fill ph-calendar-check"></i></span><span class="lt-tile-n">03</span></div>
+                            <div>
+                                <h3 lang="es-PY">Reuniones y ausencias</h3>
+                                <span class="es lt-tile-es" lang="es-PY">Llamadas y ausencias programadas.</span>
+                                <span class="pt" lang="pt-BR">Reuniões e ausências · chamadas e ausências.</span>
+                            </div>
+                        </article>
+                        <article class="lt-tile">
+                            <div class="lt-tile-top"><span class="lt-ico"><i class="ph-fill ph-shield-warning"></i></span><span class="lt-tile-n">04</span></div>
+                            <div>
+                                <h3 lang="es-PY">Links restringidos</h3>
+                                <span class="es lt-tile-es" lang="es-PY">Alertas con grabación HD como evidencia.</span>
+                                <span class="pt" lang="pt-BR">Links restritos · alertas com gravação HD.</span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 05 · Informe con IA -->
+        <section class="slide" data-title="Informe con IA · Relatório com IA" id="slide-5">
+            <div class="slide-context-bg lt-bg">
+                <div class="lt-glow" style="width: 70vw; height: 35vw; left: 15vw; top: 40vh; background: rgba(255, 202, 40, 0.06);"></div>
+                <div class="lt-lines"></div>
+            </div>
+
+            <div class="slide-content lt lt-stack">
+                <div class="anim-group anim-1 lt-head-center">
+                    <div class="lt-kicker"><span lang="es-PY">Informe con IA</span><span class="k-pt" lang="pt-BR">Relatório com IA</span></div>
+                    <h2 class="lt-h" lang="es-PY">La IA no solo mide. <em>Recomienda.</em></h2>
+                    <span class="pt lt-h-pt" lang="pt-BR">A IA não só mede. Recomenda.</span>
+                </div>
+
+                <div class="lt-body">
+                    <div class="lt-flow anim-group anim-2">
+                        <div class="lt-flow-line" aria-hidden="true"><span class="lt-pulse"></span></div>
+                        <article class="lt-step">
+                            <span class="lt-step-dot"><i class="ph-bold ph-scan"></i></span>
+                            <div class="lt-step-card">
+                                <span class="lt-step-n">01</span>
+                                <h3 lang="es-PY">Detecta</h3>
+                                <span class="es lt-step-es" lang="es-PY">El tiempo activo llegó al 55% de la meta.</span>
+                                <span class="pt" lang="pt-BR"><b>Detecta:</b> o tempo ativo chegou a 55% da meta.</span>
+                            </div>
+                        </article>
+                        <article class="lt-step">
+                            <span class="lt-step-dot"><i class="ph-bold ph-brain"></i></span>
+                            <div class="lt-step-card">
+                                <span class="lt-step-n">02</span>
+                                <h3 lang="es-PY">Interpreta</h3>
+                                <span class="es lt-step-es" lang="es-PY">La jornada empezó a las 11h: el desvío es de horario, no de ritmo.</span>
+                                <span class="pt" lang="pt-BR"><b>Interpreta:</b> a jornada começou às 11h; o desvio é de horário, não de ritmo.</span>
+                            </div>
+                        </article>
+                        <article class="lt-step lt-step-key">
+                            <span class="lt-step-dot"><i class="ph-fill ph-lightbulb"></i></span>
+                            <div class="lt-step-card">
+                                <span class="lt-step-n">03</span>
+                                <h3 lang="es-PY">Recomienda</h3>
+                                <span class="es lt-step-es" lang="es-PY">Revisar el horario de entrada antes de evaluar el desempeño.</span>
+                                <span class="pt" lang="pt-BR"><b>Recomenda:</b> revisar o horário de entrada antes de avaliar o desempenho.</span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="lt-note lt-note-center anim-group anim-3">
+                    <span class="es" lang="es-PY">Ejemplo con los datos de la jornada anterior. El gestor valida cada recomendación.</span>
+                    <span class="pt" lang="pt-BR">Exemplo com os dados da jornada anterior. O gestor valida cada recomendação.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 06 · Producto real -->
+        <section class="slide" data-title="Producto real · Produto real" id="slide-6">
+            <div class="slide-context-bg lt-bg">
+                <div class="lt-floor" style="opacity: 0.7;"></div>
+                <div class="lt-glow" style="width: 60vw; height: 40vw; right: -15vw; top: 15vh; background: rgba(255, 202, 40, 0.07);"></div>
+            </div>
+
+            <div class="slide-content lt lt-split">
+                <div>
+                    <div class="anim-group anim-1">
+                        <div class="lt-kicker"><span lang="es-PY">Producto real</span><span class="k-pt" lang="pt-BR">Produto real</span></div>
+                        <h2 class="lt-h" lang="es-PY">Así lo ve <em>el gestor.</em></h2>
+                        <span class="pt lt-h-pt" lang="pt-BR">É assim que o gestor vê.</span>
+                    </div>
+
+                    <ol class="lt-callouts anim-group anim-2">
+                        <li>
+                            <span class="lt-badge-n">1</span>
+                            <div>
+                                <span class="es" lang="es-PY">Jornada detallada del día</span>
+                                <span class="pt" lang="pt-BR">Jornada detalhada do dia</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="lt-badge-n">2</span>
+                            <div>
+                                <span class="es" lang="es-PY">Tiempo activo frente a la meta</span>
+                                <span class="pt" lang="pt-BR">Tempo ativo frente à meta</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="lt-badge-n">3</span>
+                            <div>
+                                <span class="es" lang="es-PY">Herramientas y sitios más usados</span>
+                                <span class="pt" lang="pt-BR">Ferramentas e sites mais usados</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="lt-badge-n">4</span>
+                            <div>
+                                <span class="es" lang="es-PY">Ausencias y links restringidos</span>
+                                <span class="pt" lang="pt-BR">Ausências e links restritos</span>
+                            </div>
+                        </li>
+                    </ol>
+
+                    <div class="lt-live anim-group anim-3">
+                        <span class="lt-live-dot"></span>
+                        <div>
+                            <span class="es" lang="es-PY">Demostración en vivo en el stand</span>
+                            <span class="pt" lang="pt-BR">Demonstração ao vivo no estande</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lt-screen lt-rise">
+                    <div class="lt-screen-glow"></div>
+                    <div class="lt-screen-frame">
+                        <div class="lt-screen-bar"><i></i><i></i><i></i><span>THUNDERA IA LITE</span></div>
+                        <div class="lt-screen-img">
+                            <img alt="Panel real del Thundera IA Lite con datos de demostración · Painel real do Thundera IA Lite com dados de demonstração" src="assets/lite-produto-panel.png"/>
+                            <span class="lt-badge-n lt-pin" style="left: 25%; top: 57%;">1</span>
+                            <span class="lt-badge-n lt-pin" style="left: 56.5%; top: 23%;">2</span>
+                            <span class="lt-badge-n lt-pin" style="left: 93.5%; top: 14.5%;">3</span>
+                            <span class="lt-badge-n lt-pin" style="left: 49.9%; top: 88%;">4</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 07 · Próximo paso -->
+        <section class="slide" data-title="Próximo paso · Próximo passo" id="slide-7">
+            <div class="slide-context-bg lt-bg">
+                <div class="lt-floor"></div>
+                <div class="lt-glow" style="width: 55vw; height: 55vw; left: -15vw; top: 10vh; background: rgba(255, 202, 40, 0.08);"></div>
+            </div>
+
+            <div class="slide-content lt lt-close">
+                <div class="lt-person lt-person-close lt-rise" aria-hidden="true">
+                    <div class="lt-person-glow"></div>
+                    <img alt="" src="assets/imagem homem sem venda.png"/>
+                </div>
+
+                <div class="lt-close-copy">
+                    <div class="lt-kicker anim-group anim-1"><span lang="es-PY">Próximo paso</span><span class="k-pt" lang="pt-BR">Próximo passo</span></div>
+                    <h2 class="anim-group anim-1 lt-close-title" lang="es-PY">Ahora <mark>lo ves.</mark><br/>Ahora <mark>lo controlás.</mark></h2>
+                    <span class="anim-group anim-2 pt lt-close-pt" lang="pt-BR">Agora você enxerga. Agora você controla.</span>
+
+                    <div class="lt-next anim-group anim-3">
+                        <div class="lt-next-step">
+                            <b>01</b>
+                            <div>
+                                <span class="es" lang="es-PY">Vea la plataforma en vivo, aquí en el stand.</span>
+                                <span class="pt" lang="pt-BR">Veja a plataforma ao vivo, aqui no estande.</span>
+                            </div>
+                        </div>
+                        <div class="lt-next-step">
+                            <b>02</b>
+                            <div>
+                                <span class="es" lang="es-PY">Defina un piloto con un equipo de su empresa.</span>
+                                <span class="pt" lang="pt-BR">Defina um piloto com uma equipe da sua empresa.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lt-cta anim-group anim-4">
+                        <div>
+                            <span class="es" lang="es-PY">Solicite su demostración</span>
+                            <span class="pt" lang="pt-BR">Solicite sua demonstração</span>
+                        </div>
+                        <i class="ph-bold ph-arrow-right" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="nav-hitbox left" id="nav-area-prev"><div class="nav-arrow"><i class="ph ph-caret-left"></i></div></div>
+    <div class="nav-hitbox right" id="nav-area-next"><div class="nav-arrow"><i class="ph ph-caret-right"></i></div></div>
+
+    <script src="js/presentation.js"></script>
+</body>
+</html>

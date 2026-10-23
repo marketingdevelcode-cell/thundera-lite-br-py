@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Thundera IA Lite | Apresentação para feira</title>
+    <!-- Web Fonts -->
+    <link href="https://fonts.cdnfonts.com/css/sansation" rel="stylesheet"/>
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&amp;display=swap" rel="stylesheet"/>
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- Base styles -->
+    <link href="style/presentation.css" rel="stylesheet"/>
+    <style>
+        /* ====================================================================
+           THUNDERA IA LITE — DESIGN TOKENS
+           Extends the shared tokens already defined in style/style.css and
+           style/presentation.css (--primary, --glass-bg, --glass-border,
+           --glass-blur, --text-main) instead of duplicating their values.
+           Only values specific to this deck are added here, once, as the
+           single source of truth for every component below.
+           ==================================================================== */
+        :root {
+            --text-muted: #9AA0A8;   /* cooler reading tone for this deck; overrides the shared rgba(255,255,255,.85) */
+            --info: #3B82F6;          /* secondary data series: reuniões, sites, info badges */
+            --neutral: #64748B;       /* tertiary / inactive data series */
+            --surface: rgba(15, 15, 18, 0.85);
+            --accent-ink: #171207;    /* text/icons on solid accent fills — 13:1 on #FFCA28 */
+
+            --radius-sm: 0.6cqw;
+            --radius-md: 1cqw;
+            --radius-lg: 1.5cqw;
+
+            --fs-display: 4.5cqw;
+            --fs-h2: 4cqw;
+            --fs-title: 1.8cqw;
+            --fs-title-sm: 1.4cqw;
+            --fs-body: 1.3cqw;
+            --fs-body-sm: 1.1cqw;
+            --fs-tag: 1cqw;
+            --fs-small: 0.9cqw;
+        }
+
+        .text-dark { color: var(--accent-ink); }
+        .text-info { color: var(--info); }
+
+        /* Design System: Glass Box (Strictly using cqw/cqh for perfect 16:9 scaling) */
+        .glass-box {
+            background: linear-gradient(150deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 4cqh 2.5cqw;
+            backdrop-filter: var(--glass-blur);
+            box-shadow: 0 1.5cqh 3cqh rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .glass-box:hover {
+            border-color: rgba(255, 202, 40, 0.2);
+        }
+
+        /* Design System: Icon Wrapper */
+        .box-icon-wrapper {
+            width: 4.5cqw;
+            height: 4.5cqw;
+            border-radius: var(--radius-sm);
+            background: linear-gradient(135deg, rgba(255, 202, 40, 0.15) 0%, rgba(255, 202, 40, 0.05) 100%);
+            border: 1px solid rgba(255, 202, 40, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2cqh;
+            flex-shrink: 0;
+        }
+
+        .box-icon-wrapper-solid {
+            background: var(--primary);
+            border: 1px solid var(--primary);
+            box-shadow: none;
+        }
+        
+        .box-icon-wrapper-info {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(59, 130, 246, 0.05) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        /* presentation.css carries `.box-icon-wrapper i { font-size: 6.5cqw !important }`
+           from a slide this deck doesn't use, which force-overrides every icon glyph
+           here regardless of chip size, and also pins icon color to a flat translucent
+           white — silently defeating .text-primary/.text-dark on every wrapper. Reset
+           both so the icon follows the wrapper's intended size and inherited color. */
+        .box-icon-wrapper i {
+            font-size: 2.2cqw !important;
+            color: inherit;
+        }
+
+        .highlight {
+            border: 1px solid rgba(255, 202, 40, 0.4);
+            box-shadow: 0 0 3cqh rgba(255, 202, 40, 0.05), inset 0 0 2cqw rgba(255, 202, 40, 0.05);
+        }
+
+        /* Fluid Layouts that respect container queries */
+        .flex-row { display: flex; flex-direction: row; }
+        .flex-col { display: flex; flex-direction: column; }
+        .items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .justify-center { justify-content: center; }
+        .gap-md { gap: 2cqw; }
+        .gap-lg { gap: 4cqw; }
+
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5cqw; width: 100%; margin-top: 3cqh; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2cqw; width: 100%; margin-top: 3cqh; }
+
+        /* Typography improvements for legibility based on CQW */
+        .section-heading { font-family: 'Sansation', sans-serif; font-size: var(--fs-h2); color: white; font-weight: bold; line-height: 1.2; letter-spacing: -0.02em; }
+        .title-md { font-family: 'Sansation', sans-serif; font-size: var(--fs-title); color: white; font-weight: bold; margin-bottom: 1.5cqh; line-height: 1.3; }
+        .text-desc { font-family: 'Satoshi', sans-serif; font-size: var(--fs-body); color: #E1E2E6; line-height: 1.5; }
+        .tag-primary { font-family: 'Sansation', sans-serif; font-size: var(--fs-tag); letter-spacing: 0.3cqw; text-transform: uppercase; font-weight: 800; color: var(--primary); margin-bottom: 2cqh; display: inline-block; }
+
+        /* Badge / pill — one component for every inline status label (was three
+           hand-styled spans with duplicated padding/radius/border rules) */
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.6cqh 1.2cqw;
+            border-radius: 2cqw;
+            font-family: 'Sansation', sans-serif;
+            font-weight: 700;
+            font-size: var(--fs-tag);
+            white-space: nowrap;
+        }
+        .pill-neutral { background: rgba(255, 255, 255, 0.1); color: #fff; }
+        .pill-solid { background: var(--primary); color: var(--accent-ink); }
+        .pill-info { background: rgba(59, 130, 246, 0.1); color: var(--info); border: 1px solid rgba(59, 130, 246, 0.3); }
+
+        /* Legend row — dot + label + sublabel, reused by any data-series key */
+        .legend-item { display: flex; gap: 1cqw; align-items: flex-start; }
+        .legend-dot { width: 1cqw; height: 1cqw; border-radius: 50%; margin-top: 0.5cqh; flex-shrink: 0; }
+        .legend-dot-accent { background: var(--primary); box-shadow: 0 0 1cqw var(--primary); }
+        .legend-dot-info { background: var(--info); box-shadow: 0 0 1cqw var(--info); }
+        .legend-dot-neutral { background: var(--neutral); }
+        .legend-label { font-family: 'Sansation', sans-serif; font-weight: 700; font-size: var(--fs-title-sm); line-height: 1.2; display: block; }
+        .legend-sub { color: var(--text-muted); font-family: 'Satoshi', sans-serif; font-size: var(--fs-body-sm); }
+
+        /* Process step numbers */
+        .step-number {
+            font-size: 3.5cqw;
+            font-family: 'Sansation', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1.5cqh;
+            line-height: 1;
+            background: linear-gradient(to bottom, #FFF, #555);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .step-number-active { 
+            background: linear-gradient(to bottom, #FFCA28, #B38600);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom Visuals */
+        .donut-container { position: relative; width: 15cqw; height: 15cqw; border-radius: 50%; background: conic-gradient(var(--primary) 0% 32%, var(--info) 32% 85%, var(--neutral) 85% 100%); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 4cqw rgba(255, 202, 40, 0.15); transition: transform 0.5s; }
+        .donut-container:hover { transform: scale(1.05); }
+        .donut-inner { width: 10.5cqw; height: 10.5cqw; background: #0A0B0E; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: inset 0 0 3cqw rgba(0,0,0,0.9); }
+
+        .bar-wrap { width: 100%; background: rgba(255,255,255,0.08); border-radius: 0.5cqw; height: 1cqh; margin-top: 1cqh; overflow: hidden; }
+        .bar-fill { height: 100%; border-radius: 0.5cqw; transition: width 1.5s ease-out; }
+        .bar-yellow { background: linear-gradient(90deg, #d4a017, var(--primary)); box-shadow: 0 0 1.5cqw rgba(255,202,40,0.6); }
+        .bar-blue { background: linear-gradient(90deg, #1d4ed8, var(--info)); box-shadow: 0 0 1.5cqw rgba(59,130,246,0.6); }
+
+        /* Advanced Background Animations */
+        @keyframes pulseWarp {
+            0% { transform: perspective(800px) rotateX(60deg) scaleY(1.5) scaleX(1); }
+            100% { transform: perspective(800px) rotateX(60deg) scaleY(1.5) scaleX(1.1); }
+        }
+        @keyframes spinConic {
+            100% { transform: rotate(360deg); }
+        }
+
+
+        /* Utilities */
+        .absolute-bottom-left { position: absolute; bottom: 5cqh; left: 5cqw; }
+        .footer-note { font-family: 'Satoshi', sans-serif; color: var(--text-muted); font-size: var(--fs-small); letter-spacing: 0.2cqw; text-transform: uppercase; font-weight: 500; margin: 0; }
+
+        /* Executive story: one number and one decision per slide. */
+        .lite-slide { background:#08090b; }
+        .lite-slide .slide-content { padding:0 4cqw; }
+        .lite-kicker { font:800 1.05cqw 'Sansation',sans-serif; letter-spacing:.22cqw; text-transform:uppercase; color:#ffca28; margin:0 0 2.2cqh; }
+        .lite-title { font:900 4.1cqw/1.12 'Sansation',sans-serif; letter-spacing:-.09cqw; color:#fff; max-width:85cqw; margin:0; }
+        .lite-title strong { color:#ffca28; font-weight:inherit; }
+        .lite-lead { font:500 1.65cqw/1.43 'Satoshi',sans-serif; color:#d3d6dc; max-width:69cqw; margin:3cqh 0 0; }
+        .lite-foot { position:absolute; bottom:3cqh; left:4cqw; color:#a9adb5; font:700 .9cqw 'Satoshi',sans-serif; letter-spacing:.05cqw; }
+        .lite-rule { border-top:1px solid rgba(255,202,40,.36); }
+        .lite-number { font:900 10cqw/.96 'Sansation',sans-serif; letter-spacing:-.45cqw; color:#ffca28; }
+        .lite-number.white { color:#fff; }
+        .lite-label { font:700 1.65cqw/1.25 'Sansation',sans-serif; color:#fff; }
+        .lite-note { font:500 1.16cqw/1.4 'Satoshi',sans-serif; color:#aeb3bc; }
+        .lite-metric-row { display:grid; grid-template-columns:1.3fr 1fr 1fr; align-items:end; gap:3cqw; margin-top:6cqh; }
+        .lite-metric-row > div { border-top:1px solid rgba(255,255,255,.2); padding-top:2cqh; }
+        .lite-metric-row .lite-number { font-size:6.8cqw; }
+        .lite-metric-row .main .lite-number { font-size:10cqw; }
+        .lite-cols { display:grid; grid-template-columns:1fr 1fr; gap:5cqw; margin-top:5cqh; }
+        .lite-col { border-top:1px solid rgba(255,202,40,.45); padding-top:2cqh; }
+        .lite-col h3 { font:700 1.8cqw 'Sansation',sans-serif; color:#fff; margin:0 0 3cqh; }
+        .lite-barline { display:grid; grid-template-columns:1fr auto; gap:1cqw; margin:0 0 2.5cqh; align-items:end; color:#fff; font:700 1.35cqw 'Satoshi',sans-serif; }
+        .lite-barline em { color:#ffca28; font-style:normal; }
+        .lite-barline b { grid-column:1/3; height:.8cqh; display:block; background:#24262b; border-radius:1cqh; overflow:hidden; }
+        .lite-barline b::before { content:''; display:block; width:var(--w); height:100%; background:#ffca28; border-radius:inherit; }
+        .lite-barline.blue b::before { background:#5ea5ff; }
+        .lite-report { display:grid; grid-template-columns:1.25fr .75fr; gap:5cqw; margin-top:4cqh; }
+        .lite-report article { border-left:.45cqw solid #ffca28; padding-left:2.4cqw; }
+        .lite-report h3 { color:#ffca28; font:800 1.1cqw 'Sansation',sans-serif; letter-spacing:.1cqw; text-transform:uppercase; margin:0 0 1cqh; }
+        .lite-report p { color:#fff; font:500 1.54cqw/1.38 'Satoshi',sans-serif; margin:0 0 3cqh; }
+        .lite-report aside { border-top:1px solid rgba(255,255,255,.25); padding-top:2cqh; }
+        .lite-report aside p { font-size:1.36cqw; color:#d3d6dc; }
+        .lite-equation { display:flex; align-items:center; gap:1.6cqw; margin-top:5cqh; color:#fff; font:700 2cqw 'Sansation',sans-serif; }
+        .lite-equation strong { color:#ffca28; font-size:4.3cqw; }
+        .lite-payoff { margin-top:2cqh; display:grid; grid-template-columns:1fr 1fr; gap:4cqw; border-top:1px solid rgba(255,202,40,.5); padding-top:3cqh; }
+        .lite-payoff .lite-number { font-size:7.2cqw; }
+        .lite-inputs { display:grid; grid-template-columns:repeat(4,1fr); gap:2cqw; margin:4cqh 0 3cqh; }
+        .lite-inputs label { color:#c7cbd2; font:700 1.18cqw 'Satoshi',sans-serif; }
+        .lite-inputs input { box-sizing:border-box; display:block; width:100%; margin-top:1cqh; padding:1.2cqh 1cqw; border:1px solid #6b5b2d; border-radius:.5cqw; background:#17181c; color:#fff; font:800 2.1cqw 'Sansation',sans-serif; }
+        .lite-inputs input:focus { outline:2px solid #ffca28; }
+        .lite-live { border-top:1px solid rgba(255,202,40,.55); padding-top:3cqh; display:flex; align-items:end; gap:5cqw; }
+        .lite-live .lite-number { font-size:8cqw; }
+        .lite-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:3cqw; margin-top:7cqh; }
+        .lite-steps article { border-top:1px solid rgba(255,202,40,.5); padding-top:2cqh; }
+        .lite-steps b { display:block; color:#ffca28; font:900 3.5cqw 'Sansation',sans-serif; margin-bottom:1cqh; }
+        .lite-steps h3 { color:#fff; font:800 1.75cqw 'Sansation',sans-serif; margin:0 0 1cqh; }
+        .lite-steps p { color:#c8cbd1; font:500 1.23cqw/1.4 'Satoshi',sans-serif; margin:0; }
+        .lite-cta { font:900 5.5cqw/1.1 'Sansation',sans-serif; color:#fff; max-width:82cqw; margin:0; }
+        .lite-cta strong { color:#ffca28; }
+        .lite-features { display:grid; grid-template-columns:repeat(3,1fr); gap:3cqw; margin-top:5cqh; }
+        .lite-features article { border-top:1px solid rgba(255,202,40,.52); padding-top:1.6cqh; min-height:13cqh; }
+        .lite-features h3 { color:#fff; font:800 1.58cqw/1.25 'Sansation',sans-serif; margin:0 0 .9cqh; }
+        .lite-features p { color:#cbd0d8; font:500 1.16cqw/1.4 'Satoshi',sans-serif; margin:0; }
+        .lite-features .feature-num { color:#ffca28; font:900 1.3cqw 'Sansation',sans-serif; display:block; margin-bottom:1cqh; }
+        .lite-dashboard { margin-top:3cqh; padding:2.5cqh 2.5cqw; border:1px solid rgba(255,255,255,.14); border-radius:1.2cqw; background:linear-gradient(145deg,#15171b,#0e0f12); box-shadow:0 2cqh 5cqh rgba(0,0,0,.35); }
+        .lite-dashboard-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:2cqh; color:#fff; font:800 1.25cqw 'Sansation',sans-serif; }
+        .lite-dashboard-head span:last-child { color:#9fa6b2; font:700 .98cqw 'Satoshi',sans-serif; }
+        .lite-dashboard-main { display:grid; grid-template-columns:1fr 1.1fr; gap:4cqw; align-items:center; }
+        .lite-dashboard-donut-area { display:flex; align-items:center; gap:2.5cqw; }
+        .lite-dashboard-donut { position:relative; width:16cqw; aspect-ratio:1; border-radius:50%; background:conic-gradient(#f0444c 0 32%,#ffb000 32% 85%,#677487 85% 100%); display:grid; place-items:center; flex:none; box-shadow:0 0 2.5cqw rgba(255,176,0,.13); }
+        .lite-dashboard-donut::before { content:''; position:absolute; width:11.4cqw; aspect-ratio:1; border-radius:50%; background:#101115; }
+        .lite-dashboard-center { position:relative; text-align:center; z-index:1; color:#fff; }
+        .lite-dashboard-center strong { display:block; font:900 3.7cqw/1 'Sansation',sans-serif; }
+        .lite-dashboard-center small { color:#aeb3bc; font:800 .82cqw 'Satoshi',sans-serif; text-transform:uppercase; }
+        .lite-dashboard-legend { display:grid; gap:1.7cqh; }
+        .lite-dashboard-legend div { color:#fff; font:700 1.16cqw/1.3 'Satoshi',sans-serif; white-space:nowrap; }
+        .lite-dashboard-legend b { display:inline-block; width:.9cqw; height:.9cqw; border-radius:50%; margin-right:.7cqw; }
+        .lite-dashboard-legend em { color:#aeb3bc; font-style:normal; }
+        .lite-dashboard-insight { border-left:1px solid rgba(255,255,255,.14); padding-left:3cqw; }
+        .lite-dashboard-insight span { display:block; color:#ffca28; font:800 .9cqw 'Sansation',sans-serif; text-transform:uppercase; letter-spacing:.09cqw; }
+        .lite-dashboard-insight strong { display:block; color:#fff; font:900 3.8cqw/1.05 'Sansation',sans-serif; margin:.5cqh 0 1cqh; }
+        .lite-dashboard-insight p { color:#c5cbd3; font:500 1.23cqw/1.35 'Satoshi',sans-serif; margin:0; }
+        .lite-timeline { border-top:1px solid rgba(255,255,255,.13); margin-top:2.5cqh; padding-top:1.6cqh; }
+        .lite-timeline-header { display:flex; justify-content:space-between; color:#fff; font:800 1.08cqw 'Sansation',sans-serif; margin-bottom:1cqh; }
+        .lite-timeline-header em { color:#ffb000; font-style:normal; }
+        .lite-timeline-track { height:2.8cqh; background:#24262b; border-radius:.35cqw; position:relative; overflow:hidden; }
+        .lite-timeline-track i { display:block; height:100%; background:#ffb000; border-radius:.3cqw; position:absolute; top:0; }
+        .lite-timeline-hours { display:flex; justify-content:space-between; color:#9ca3af; font:700 .9cqw 'Satoshi',sans-serif; margin-top:.7cqh; }
+        .lite-slide .slide-content .lite-dashboard-insight p { font-size:1.23cqw; line-height:1.35; }
+        .lite-slide .slide-content p.lite-kicker { font-size:1.05cqw; line-height:1.2; }
+        .lite-slide .slide-content p.lite-lead { font-size:1.65cqw; line-height:1.43; }
+        .lite-slide .slide-content p.lite-note { font-size:1.16cqw; line-height:1.4; }
+        .lite-slide .slide-content p.lite-foot { font-size:.9cqw; line-height:1.2; }
+        @media (max-width:768px) { .lite-slide .slide-content { padding:2vw; } }
+    </style>
+</head>
+<body class="presentation-body">
+    <!-- UI Overlay: Progress Bar -->
+    <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    
+    <!-- UI Overlay: Fixed Controls -->
+    <header class="ui-header">
+        <div class="logo">
+            <img alt="Thundera IA" class="logo-white" src="assets/logo-amarelo-branco.png" style="height: 4.2vh; display: block;"/>
+        </div>
+        <div class="ui-controls">
+            <div class="slide-counter font-satoshi text-muted">
+                <span id="current-slide">01</span> / <span id="total-slides">08</span>
+            </div>
+            <button class="btn-icon" id="btn-toggle-eye" title="Ocultar da Apresentação (O)"><i class="ph ph-eye"></i></button>
+            <button class="btn-icon" id="btn-map" title="Abrir Mapa (M)"><i class="ph ph-squares-four"></i></button>
+            <button class="btn-icon" id="btn-fullscreen" title="Tela Cheia (F)"><i class="ph ph-corners-out"></i></button>
+        </div>
+    </header>
+    
+    <div class="presentation-bg"></div>
+    
+    <!-- Slide Map Overlay -->
+    <div class="slide-map-overlay" id="slide-map">
+        <div class="slide-map-header">
+            <h3 class="font-sansation">Visão Geral da Apresentação</h3>
+            <button class="btn-icon" id="btn-close-map"><i class="ph ph-x"></i></button>
+        </div>
+        <div class="slide-map-grid font-satoshi" id="slide-map-grid"></div>
+    </div>
+
+    <!-- Slides Engine -->
+    <main class="slides-container" id="slides-container">
+      <section class="slide lite-slide slide-active" data-title="A pergunta" id="slide-1">
+        <div class="slide-content">
+          <p class="lite-kicker">THUNDERA IA LITE</p>
+          <h1 class="lite-title" style="font-size:5.7cqw; max-width:83cqw;">Quanto custa uma hora de trabalho <strong>que você não consegue enxergar?</strong></h1>
+          <p class="lite-lead">O Thundera mostra onde a jornada se concentra e entrega uma análise da IA para transformar dados em ações de gestão.</p>
+          <p class="lite-foot">VISIBILIDADE DO TEMPO. CLAREZA PARA DECIDIR.</p>
+        </div>
+      </section>
+
+      <section class="slide lite-slide" data-title="A jornada em números" id="slide-2">
+        <div class="slide-content">
+          <p class="lite-kicker">EXEMPLO DE UM DIA DE 8 HORAS</p>
+          <h2 class="lite-title" style="font-size:3.3cqw;">O painel revela <strong>como o dia foi distribuído.</strong></h2>
+          <div class="lite-dashboard" role="img" aria-label="Painel ilustrativo: 53% da jornada em reuniões, 32% em atividade e 15% em inatividade. Linha do tempo mostra quatro blocos de reunião entre 9h e 17h.">
+            <div class="lite-dashboard-head"><span>Visão da jornada</span><span>Colaborador · Dia ilustrativo</span></div>
+            <div class="lite-dashboard-main">
+              <div class="lite-dashboard-donut-area">
+                <div class="lite-dashboard-donut"><div class="lite-dashboard-center"><strong>53%</strong><small>em reuniões</small></div></div>
+                <div class="lite-dashboard-legend">
+                  <div><b style="background:#ffb000"></b>Reuniões <em>· 4h15</em></div>
+                  <div><b style="background:#f0444c"></b>Ativo <em>· 2h33</em></div>
+                  <div><b style="background:#677487"></b>Inativo <em>· 1h12</em></div>
+                </div>
+              </div>
+              <div class="lite-dashboard-insight">
+                <span>Ponto de atenção</span>
+                <strong>4h15 em calls</strong>
+                <p>Mais da metade do dia ficou comprometida com reuniões. O gestor pode investigar quais são recorrentes e quais exigem presença.</p>
+              </div>
+            </div>
+            <div class="lite-timeline">
+              <div class="lite-timeline-header"><span>Reuniões ao longo do dia</span><em>4 blocos · 4h15 no total</em></div>
+              <div class="lite-timeline-track"><i style="left:6.25%;width:9.375%"></i><i style="left:25%;width:9.375%"></i><i style="left:50%;width:18.75%"></i><i style="left:81.25%;width:15.625%"></i></div>
+              <div class="lite-timeline-hours"><span>9h</span><span>11h</span><span>13h</span><span>15h</span><span>17h</span></div>
+            </div>
+          </div>
+          <p class="lite-foot">DADOS ILUSTRATIVOS • REUNIÃO NÃO É IMPRODUTIVIDADE POR DEFINIÇÃO</p>
+        </div>
+      </section>
+
+      <section class="slide lite-slide" data-title="Onde o tempo vai" id="slide-3">
+        <div class="slide-content">
+          <p class="lite-kicker">O DETALHE POR TRÁS DO TOTAL</p>
+          <h2 class="lite-title">O gestor vê <strong>em quais ferramentas</strong> o tempo se concentra.</h2>
+          <div class="lite-cols">
+            <div class="lite-col"><h3>Aplicativos usados</h3>
+              <div class="lite-barline" style="--w:100%"><span>Microsoft Teams</span><em>3h15</em><b></b></div>
+              <div class="lite-barline" style="--w:54%"><span>Microsoft Outlook</span><em>1h45</em><b></b></div>
+              <div class="lite-barline" style="--w:36%"><span>Slack</span><em>1h10</em><b></b></div>
+              <div class="lite-barline" style="--w:21%"><span>Visual Studio Code</span><em>0h40</em><b></b></div>
+            </div>
+            <div class="lite-col"><h3>Sites acessados</h3>
+              <div class="lite-barline blue" style="--w:100%"><span>web.whatsapp.com</span><em>1h20</em><b></b></div>
+              <div class="lite-barline blue" style="--w:94%"><span>dev.azure.com</span><em>1h15</em><b></b></div>
+              <div class="lite-barline blue" style="--w:19%"><span>github.com</span><em>0h15</em><b></b></div>
+              <p class="lite-note">O contexto do cargo determina a interpretação. Tempo em um site não mede entrega por si só.</p>
+            </div>
+          </div>
+          <p class="lite-foot">EXEMPLO ILUSTRATIVO • TEMPOS DE APLICATIVOS E SITES PODEM SE SOBREPÔR</p>
+        </div>
+      </section>
+
+      <section class="slide lite-slide" data-title="O que o gestor recebe" id="slide-4">
+        <div class="slide-content">
+          <p class="lite-kicker">THUNDERA IA LITE NA GESTÃO</p>
+          <h2 class="lite-title">Cinco recursos para <strong>enxergar, entender e agir.</strong></h2>
+          <div class="lite-features">
+            <article><span class="feature-num">01</span><h3>Jornada e desvios</h3><p>Compare horários planejados e realizados e identifique pausas ou mudanças de rotina.</p></article>
+            <article><span class="feature-num">02</span><h3>Atividades e foco</h3><p>Veja tempo ativo, reuniões, aplicativos e sites para entender a distribuição do dia.</p></article>
+            <article><span class="feature-num">03</span><h3>Painéis gerenciais</h3><p>Acompanhe indicadores por pessoa e equipe em uma visão consolidada.</p></article>
+            <article><span class="feature-num">04</span><h3>Gravação de tela em HD</h3><p>Consulte evidências quando precisar investigar um evento ou orientar um processo.</p></article>
+            <article><span class="feature-num">05</span><h3>Relatório com IA</h3><p>Receba a leitura dos dados, pontos de atenção e recomendações para testar.</p></article>
+          </div>
+          <p class="lite-foot">AS MÉTRICAS MOSTRAM O SINAL. O CONTEXTO ORIENTA A DECISÃO.</p>
+        </div>
+      </section>
+
+      <section class="slide lite-slide" data-title="Relatório da IA" id="slide-5">
+        <div class="slide-content">
+          <p class="lite-kicker">O RELATÓRIO QUE CHEGA AO GESTOR</p>
+          <h2 class="lite-title">A IA mostra <strong>o que os números sugerem fazer.</strong></h2>
+          <div class="lite-report">
+            <article>
+              <h3>Diagnóstico ilustrativo</h3>
+              <p>As reuniões ocuparam 4h15, ou 53% da jornada. Restaram 2h33 de tempo ativo fora das chamadas. Teams e Outlook concentraram boa parte do uso de aplicativos.</p>
+              <h3>Recomendação</h3>
+              <p>Revise as reuniões recorrentes, preserve um bloco de foco e compare os próximos dias antes de concluir que existe um padrão.</p>
+            </article>
+            <aside>
+              <h3>O gestor recebe</h3>
+              <p><strong style="color:#fff">Sinal:</strong> onde o tempo se concentrou.</p>
+              <p><strong style="color:#fff">Contexto:</strong> ferramentas e rotina da função.</p>
+              <p><strong style="color:#fff">Próximo passo:</strong> uma ação que pode ser testada e medida.</p>
+            </aside>
+          </div>
+          <p class="lite-foot">EXEMPLO ILUSTRATIVO • A ANÁLISE DEVE SER VALIDADA PELO GESTOR</p>
+        </div>
+      </section>
+
+      <section class="slide lite-slide" data-title="Sua simulação" id="slide-6">
+        <div class="slide-content">
+          <p class="lite-kicker">SIMULE COM OS NÚMEROS DA SUA EMPRESA</p>
+          <h2 class="lite-title">Quanto vale <strong>recuperar tempo</strong> no seu time?</h2>
+          <div class="lite-inputs">
+            <label>Pessoas na equipe<input id="lite-people" type="number" min="1" max="100000" value="20" inputmode="numeric"></label>
+            <label>Minutos por dia<input id="lite-minutes" type="number" min="0" max="480" value="30" inputmode="numeric"></label>
+            <label>Dias por mês<input id="lite-days" type="number" min="1" max="31" value="22" inputmode="numeric"></label>
+            <label>Custo por hora (R$)<input id="lite-hourly" type="number" min="0" max="100000" value="50" inputmode="decimal"></label>
+          </div>
+          <div class="lite-live"><div><div class="lite-number" id="lite-money">R$ 11 mil</div><div class="lite-label">capacidade mensal equivalente</div></div><div><div class="lite-number white" id="lite-hours" style="font-size:5cqw;">220h</div><div class="lite-label">horas por mês</div></div></div>
+          <p class="lite-note" style="margin-top:3cqh;">Simulação de oportunidade. A liberação de tempo e o valor econômico dependem do piloto, da função e do uso efetivo das horas.</p>
+          <p class="lite-foot">AJUSTE OS QUATRO CAMPOS DURANTE A CONVERSA</p>
+        </div>
+      </section>
+
+      <section class="slide lite-slide" data-title="Piloto mensurável" id="slide-7">
+        <div class="slide-content">
+          <p class="lite-kicker">DO DIAGNÓSTICO AO GANHO MENSURÁVEL</p>
+          <h2 class="lite-title">O piloto responde <strong>quanto tempo pode ser recuperado.</strong></h2>
+          <div class="lite-steps">
+            <article><b>01</b><h3>Medir a linha de base</h3><p>Distribuição da jornada, horários, reuniões e uso de ferramentas.</p></article>
+            <article><b>02</b><h3>Agir sobre um padrão</h3><p>O relatório da IA aponta a hipótese. O gestor escolhe uma mudança viável.</p></article>
+            <article><b>03</b><h3>Comparar a evolução</h3><p>As mesmas métricas mostram se houve tempo liberado e sustentam a decisão.</p></article>
+          </div>
+          <p class="lite-lead" style="margin-top:5cqh;">Painel, controle de horários e gravação em HD apoiam a investigação quando necessário.</p>
+          <p class="lite-foot">RESULTADO A VALIDAR COM DADOS DA SUA OPERAÇÃO</p>
+        </div>
+      </section>
+
+      <section class="slide lite-slide" data-title="Conversa no estande" id="slide-8">
+        <div class="slide-content">
+          <p class="lite-kicker">PRÓXIMO PASSO</p>
+          <h2 class="lite-cta">Traga o tamanho da sua equipe e o custo por hora. <strong>Vamos calcular a oportunidade juntos.</strong></h2>
+          <div class="lite-rule" style="margin-top:6cqh; padding-top:3cqh; max-width:74cqw;"><p class="lite-lead" style="margin:0;">Depois, escolha um time para o piloto. O Thundera IA Lite mede a linha de base e entrega a análise para sua decisão.</p></div>
+          <p class="lite-foot">FALE COM NOSSA EQUIPE NO ESTANDE</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Side Navigation Triggers (Invisible hitboxes for mouse users) -->
+    <div class="nav-hitbox left" id="nav-area-prev">
+        <div class="nav-arrow"><i class="ph ph-caret-left"></i></div>
+    </div>
+    <div class="nav-hitbox right" id="nav-area-next">
+        <div class="nav-arrow"><i class="ph ph-caret-right"></i></div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="js/presentation.js"></script>
+    <script>
+      (() => {
+        const ids = ['lite-people','lite-minutes','lite-days','lite-hourly'];
+        const inputs = ids.map(id => document.getElementById(id));
+        const money = document.getElementById('lite-money');
+        const hours = document.getElementById('lite-hours');
+        const brl = new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0});
+        function updateLiteCalculator(){
+          const [people,minutes,days,hourly] = inputs.map(el => Math.max(0, Number(el.value) || 0));
+          const totalHours = people * minutes * days / 60;
+          hours.textContent = new Intl.NumberFormat('pt-BR',{maximumFractionDigits:1}).format(totalHours) + 'h';
+          money.textContent = brl.format(totalHours * hourly);
+        }
+        inputs.forEach(input => input.addEventListener('input',updateLiteCalculator));
+        updateLiteCalculator();
+      })();
+    </script>
+
+</body>
+</html>
