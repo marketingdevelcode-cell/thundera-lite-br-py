@@ -9,6 +9,7 @@
     <script src="https://unpkg.com/@phosphor-icons/web@2.1.2"></script>
     <link href="style/presentation.css" rel="stylesheet"/>
     <link href="style/lite-deck.css" rel="stylesheet"/>
+    <link href="style/lite-leads.css" rel="stylesheet"/>
 </head>
 <body class="presentation-body">
     <div class="progress-bar-container"><div class="progress-bar" id="progress-bar"></div></div>
@@ -18,8 +19,9 @@
             <img alt="Thundera IA Lite" src="assets/logo_lite.png" style="height: 4.2vh; display: block;"/>
         </div>
         <div class="ui-controls">
-            <div class="slide-counter font-satoshi"><span id="current-slide">01</span> / <span id="total-slides">07</span></div>
+            <div class="slide-counter font-satoshi"><span id="current-slide">01</span> / <span id="total-slides">08</span></div>
             <button class="btn-icon" id="btn-toggle-eye" title="Ocultar diapositiva · Ocultar slide (O)"><i class="ph ph-eye"></i></button>
+            <button class="btn-icon btn-icon-badge" id="btn-leads" title="Captar lead (L) · Captar lead (L)"><i class="ph ph-user-plus"></i><span class="lead-count" id="lead-count">0</span></button>
             <button class="btn-icon" id="btn-map" title="Mapa (M)"><i class="ph ph-squares-four"></i></button>
             <button class="btn-icon" id="btn-fullscreen" title="Pantalla completa · Tela cheia (F)"><i class="ph ph-corners-out"></i></button>
         </div>
@@ -122,211 +124,8 @@
             </div>
         </section>
 
-        <!-- 03 · Dentro de la jornada -->
-        <section class="slide" data-title="Dentro de la jornada · Dentro da jornada" id="slide-3">
-            <div class="slide-context-bg lt-bg">
-                <div class="lt-lines"></div>
-                <div class="lt-glow" style="width: 60vw; height: 30vw; left: 20vw; top: 35vh; background: rgba(255, 202, 40, 0.05);"></div>
-            </div>
-
-            <div class="slide-content lt lt-stack">
-                <div class="anim-group anim-1">
-                    <div class="lt-kicker"><span lang="es-PY">Dentro de la jornada</span><span class="k-pt" lang="pt-BR">Dentro da jornada</span></div>
-                    <h2 class="lt-h" lang="es-PY">Cada minuto, <em>con contexto.</em></h2>
-                    <span class="pt lt-h-pt" lang="pt-BR">Cada minuto, com contexto.</span>
-                </div>
-
-                <div class="lt-body">
-                    <div class="lt-day lt-reveal anim-group anim-2">
-                        <div class="lt-day-top">
-                            <div class="lt-day-title">
-                                <span class="es" lang="es-PY">Un colaborador, un día</span>
-                                <span class="pt" lang="pt-BR">Um colaborador, um dia</span>
-                            </div>
-                            <div class="lt-meta">
-                                <span class="es" lang="es-PY">Meta diaria <b>8h00</b></span>
-                                <span class="pt" lang="pt-BR">Meta diária</span>
-                            </div>
-                        </div>
-
-                        <div class="lt-axis" aria-hidden="true"><span>08h</span><span>11h</span><span>14h</span><span>17h</span></div>
-                        <div class="lt-strip" role="img" aria-label="Sin registro hasta las 11h29; luego herramientas, sitios web, reuniones e inactividad hasta las 16h48">
-                            <i class="seg-none" style="flex: 209;">
-                                <span class="lt-seg-label"><span class="es" lang="es-PY">Sin registro</span><span class="pt" lang="pt-BR">Sem registro</span></span>
-                            </i>
-                            <i class="seg-tool" style="flex: 25;"></i>
-                            <i class="seg-meet" style="flex: 50;"></i>
-                            <i class="seg-idle" style="flex: 30;"></i>
-                            <i class="seg-web" style="flex: 35;"></i>
-                            <i class="seg-tool" style="flex: 60;"></i>
-                            <i class="seg-tool" style="flex: 18;"></i>
-                            <i class="seg-web" style="flex: 28;"></i>
-                            <i class="seg-idle" style="flex: 22;"></i>
-                            <i class="seg-tool" style="flex: 15;"></i>
-                            <i class="seg-tool" style="flex: 35;"></i>
-                            <i class="seg-none" style="flex: 13;"></i>
-                        </div>
-
-                        <div class="lt-sum anim-group anim-3">
-                            <div class="lt-sum-main">
-                                <div class="lt-donut"><b>55%</b></div>
-                                <div>
-                                    <span class="es" lang="es-PY">Tiempo activo<small>4h26 de la meta de 8h00</small></span>
-                                    <span class="pt" lang="pt-BR">Tempo ativo · 4h26 de 8h00</span>
-                                </div>
-                            </div>
-                            <i class="lt-sum-op" aria-hidden="true">=</i>
-                            <div class="lt-sum-item tool">
-                                <b>2h33</b>
-                                <span class="es" lang="es-PY">Herramientas</span>
-                                <span class="pt" lang="pt-BR">Ferramentas</span>
-                            </div>
-                            <i class="lt-sum-op" aria-hidden="true">+</i>
-                            <div class="lt-sum-item web">
-                                <b>1h03</b>
-                                <span class="es" lang="es-PY">Sitios web</span>
-                                <span class="pt" lang="pt-BR">Sites</span>
-                            </div>
-                            <i class="lt-sum-op" aria-hidden="true">+</i>
-                            <div class="lt-sum-item meet">
-                                <b>0h50</b>
-                                <span class="es" lang="es-PY">Reuniones</span>
-                                <span class="pt" lang="pt-BR">Reuniões</span>
-                            </div>
-                            <div class="lt-sum-item idle">
-                                <b>0h52</b>
-                                <span class="es" lang="es-PY">Inactividad</span>
-                                <span class="pt" lang="pt-BR">Inatividade</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="lt-note anim-group anim-4">
-                    <span class="es" lang="es-PY">Datos de demostración de la plataforma. El tiempo activo suma herramientas, sitios web y reuniones.</span>
-                    <span class="pt" lang="pt-BR">Dados de demonstração da plataforma. O tempo ativo soma ferramentas, sites e reuniões.</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- 04 · Funciones -->
-        <section class="slide" data-title="Funciones · Funções" id="slide-4">
-            <div class="slide-context-bg lt-bg">
-                <div class="lt-dots"></div>
-                <div class="lt-glow" style="width: 45vw; height: 45vw; right: -8vw; top: 5vh; background: rgba(255, 202, 40, 0.08);"></div>
-            </div>
-
-            <div class="slide-content lt lt-stack">
-                <div class="anim-group anim-1">
-                    <div class="lt-kicker"><span lang="es-PY">Lo que entrega el Lite</span><span class="k-pt" lang="pt-BR">O que o Lite entrega</span></div>
-                    <h2 class="lt-h" lang="es-PY">Todo lo que el gestor <em>necesita ver.</em></h2>
-                    <span class="pt lt-h-pt" lang="pt-BR">Tudo o que o gestor precisa ver.</span>
-                </div>
-
-                <div class="lt-body">
-                    <div class="lt-bento anim-group anim-2">
-                        <article class="lt-tile">
-                            <div class="lt-tile-top"><span class="lt-ico"><i class="ph-fill ph-target"></i></span><span class="lt-tile-n">01</span></div>
-                            <div>
-                                <h3 lang="es-PY">Jornada y meta</h3>
-                                <span class="es lt-tile-es" lang="es-PY">Activo e inactivo frente a la meta.</span>
-                                <span class="pt" lang="pt-BR">Jornada e meta · ativo e inativo frente à meta.</span>
-                            </div>
-                        </article>
-                        <article class="lt-tile">
-                            <div class="lt-tile-top"><span class="lt-ico"><i class="ph-fill ph-browsers"></i></span><span class="lt-tile-n">02</span></div>
-                            <div>
-                                <h3 lang="es-PY">Herramientas y sitios</h3>
-                                <span class="es lt-tile-es" lang="es-PY">Dónde se concentra el tiempo activo.</span>
-                                <span class="pt" lang="pt-BR">Ferramentas e sites · onde está o tempo ativo.</span>
-                            </div>
-                        </article>
-                        <article class="lt-tile lt-tile-hero">
-                            <i class="ph-fill ph-brain lt-watermark" aria-hidden="true"></i>
-                            <div class="lt-tile-top"><span class="lt-ico"><i class="ph-fill ph-sparkle"></i></span><span class="lt-tile-n">05</span></div>
-                            <div>
-                                <h3 lang="es-PY">Informe con IA</h3>
-                                <span class="es lt-tile-es" lang="es-PY">Interpreta la jornada y recomienda qué hacer.</span>
-                                <span class="pt" lang="pt-BR">Relatório com IA · interpreta a jornada e recomenda o que fazer.</span>
-                            </div>
-                        </article>
-                        <article class="lt-tile">
-                            <div class="lt-tile-top"><span class="lt-ico"><i class="ph-fill ph-calendar-check"></i></span><span class="lt-tile-n">03</span></div>
-                            <div>
-                                <h3 lang="es-PY">Reuniones y ausencias</h3>
-                                <span class="es lt-tile-es" lang="es-PY">Llamadas y ausencias programadas.</span>
-                                <span class="pt" lang="pt-BR">Reuniões e ausências · chamadas e ausências.</span>
-                            </div>
-                        </article>
-                        <article class="lt-tile">
-                            <div class="lt-tile-top"><span class="lt-ico"><i class="ph-fill ph-shield-warning"></i></span><span class="lt-tile-n">04</span></div>
-                            <div>
-                                <h3 lang="es-PY">Links restringidos</h3>
-                                <span class="es lt-tile-es" lang="es-PY">Alertas con grabación HD como evidencia.</span>
-                                <span class="pt" lang="pt-BR">Links restritos · alertas com gravação HD.</span>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 05 · Informe con IA -->
-        <section class="slide" data-title="Informe con IA · Relatório com IA" id="slide-5">
-            <div class="slide-context-bg lt-bg">
-                <div class="lt-glow" style="width: 70vw; height: 35vw; left: 15vw; top: 40vh; background: rgba(255, 202, 40, 0.06);"></div>
-                <div class="lt-lines"></div>
-            </div>
-
-            <div class="slide-content lt lt-stack">
-                <div class="anim-group anim-1 lt-head-center">
-                    <div class="lt-kicker"><span lang="es-PY">Informe con IA</span><span class="k-pt" lang="pt-BR">Relatório com IA</span></div>
-                    <h2 class="lt-h" lang="es-PY">La IA no solo mide. <em>Recomienda.</em></h2>
-                    <span class="pt lt-h-pt" lang="pt-BR">A IA não só mede. Recomenda.</span>
-                </div>
-
-                <div class="lt-body">
-                    <div class="lt-flow anim-group anim-2">
-                        <div class="lt-flow-line" aria-hidden="true"><span class="lt-pulse"></span></div>
-                        <article class="lt-step">
-                            <span class="lt-step-dot"><i class="ph-bold ph-scan"></i></span>
-                            <div class="lt-step-card">
-                                <span class="lt-step-n">01</span>
-                                <h3 lang="es-PY">Detecta</h3>
-                                <span class="es lt-step-es" lang="es-PY">El tiempo activo llegó al 55% de la meta.</span>
-                                <span class="pt" lang="pt-BR"><b>Detecta:</b> o tempo ativo chegou a 55% da meta.</span>
-                            </div>
-                        </article>
-                        <article class="lt-step">
-                            <span class="lt-step-dot"><i class="ph-bold ph-brain"></i></span>
-                            <div class="lt-step-card">
-                                <span class="lt-step-n">02</span>
-                                <h3 lang="es-PY">Interpreta</h3>
-                                <span class="es lt-step-es" lang="es-PY">La jornada empezó a las 11h: el desvío es de horario, no de ritmo.</span>
-                                <span class="pt" lang="pt-BR"><b>Interpreta:</b> a jornada começou às 11h; o desvio é de horário, não de ritmo.</span>
-                            </div>
-                        </article>
-                        <article class="lt-step lt-step-key">
-                            <span class="lt-step-dot"><i class="ph-fill ph-lightbulb"></i></span>
-                            <div class="lt-step-card">
-                                <span class="lt-step-n">03</span>
-                                <h3 lang="es-PY">Recomienda</h3>
-                                <span class="es lt-step-es" lang="es-PY">Revisar el horario de entrada antes de evaluar el desempeño.</span>
-                                <span class="pt" lang="pt-BR"><b>Recomenda:</b> revisar o horário de entrada antes de avaliar o desempenho.</span>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-
-                <div class="lt-note lt-note-center anim-group anim-3">
-                    <span class="es" lang="es-PY">Ejemplo con los datos de la jornada anterior. El gestor valida cada recomendación.</span>
-                    <span class="pt" lang="pt-BR">Exemplo com os dados da jornada anterior. O gestor valida cada recomendação.</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- 06 · Producto real -->
-        <section class="slide" data-title="Producto real · Produto real" id="slide-6">
+        <!-- 03 · Producto real -->
+        <section class="slide" data-title="Producto real · Produto real" id="slide-3">
             <div class="slide-context-bg lt-bg">
                 <div class="lt-floor" style="opacity: 0.7;"></div>
                 <div class="lt-glow" style="width: 60vw; height: 40vw; right: -15vw; top: 15vh; background: rgba(255, 202, 40, 0.07);"></div>
@@ -396,8 +195,372 @@
             </div>
         </section>
 
-        <!-- 07 · Próximo paso -->
-        <section class="slide" data-title="Próximo paso · Próximo passo" id="slide-7">
+        <!-- 04 · Rendimiento del equipo -->
+        <section class="slide" data-title="Tiempo útil del equipo · Tempo útil da equipe" id="slide-4">
+            <div class="slide-context-bg lt-bg">
+                <div class="lt-dots"></div>
+                <div class="lt-glow" style="width: 55vw; height: 40vw; left: -12vw; top: 20vh; background: rgba(255, 202, 40, 0.07);"></div>
+            </div>
+
+            <div class="slide-content lt lt-tm">
+                <div class="lt-tm-side">
+                    <div class="anim-group anim-1">
+                        <div class="lt-kicker"><span lang="es-PY">Rendimiento</span><span class="k-pt" lang="pt-BR">Desempenho</span></div>
+                        <h2 class="lt-h" lang="es-PY">Su equipo comercial,<br/><em>en tiempo útil.</em></h2>
+                        <span class="pt lt-h-pt" lang="pt-BR">Sua equipe comercial, em tempo útil.</span>
+                    </div>
+
+                    <div class="lt-tm-day anim-group anim-2">
+                        <div class="lt-tm-eq">
+                            <div><b>8h 00</b><span class="es" lang="es-PY">presencia</span><span class="pt" lang="pt-BR">presença</span></div>
+                            <i class="ph-bold ph-arrow-right" aria-hidden="true"></i>
+                            <div class="hit"><b>4h 21</b><span class="es" lang="es-PY">tiempo útil</span><span class="pt" lang="pt-BR">tempo útil</span></div>
+                        </div>
+                        <div class="lt-strip lt-tm-strip" aria-hidden="true">
+                            <i class="seg-tool" style="flex: 175;"></i>
+                            <i class="seg-meet" style="flex: 86;"></i>
+                            <i class="seg-web" style="flex: 55;"></i>
+                            <i class="seg-idle" style="flex: 164;"></i>
+                        </div>
+                        <ul class="lt-tm-legend">
+                            <li class="tool"><i></i><div><span class="es" lang="es-PY">Herramientas de trabajo</span><span class="pt" lang="pt-BR">Ferramentas de trabalho</span></div><b>2h 55</b></li>
+                            <li class="meet"><i></i><div><span class="es" lang="es-PY">Reuniones</span><span class="pt" lang="pt-BR">Reuniões</span></div><b>1h 26</b></li>
+                            <li class="web"><i></i><div><span class="es" lang="es-PY">Navegación web</span><span class="pt" lang="pt-BR">Navegação web</span></div><b>0h 55</b></li>
+                            <li class="idle"><i></i><div><span class="es" lang="es-PY">Sin actividad</span><span class="pt" lang="pt-BR">Sem atividade</span></div><b>2h 44</b></li>
+                        </ul>
+                    </div>
+
+                    <div class="lt-note anim-group anim-4">
+                        <span class="es" lang="es-PY">Ejemplo ilustrativo con datos de demostración.</span>
+                        <span class="pt" lang="pt-BR">Exemplo ilustrativo com dados de demonstração.</span>
+                    </div>
+                </div>
+
+                <article class="lt-tm-board anim-group anim-3">
+                    <div class="lt-tm-head">
+                        <div>
+                            <span class="es lt-tm-title" lang="es-PY">Equipo Comercial</span>
+                            <span class="pt" lang="pt-BR">Equipe Comercial · Semana 43 · 6 personas</span>
+                        </div>
+                        <span class="lt-tm-live"><i></i>En vivo · Ao vivo</span>
+                    </div>
+
+                    <div class="lt-tm-kpis">
+                        <div>
+                            <b>4h 21m</b>
+                            <span class="es" lang="es-PY">tiempo útil medio / día</span>
+                            <span class="pt" lang="pt-BR">tempo útil médio / dia</span>
+                        </div>
+                        <div class="hit">
+                            <b>87%</b>
+                            <span class="es" lang="es-PY">de la meta de 5h</span>
+                            <span class="pt" lang="pt-BR">da meta de 5h</span>
+                        </div>
+                        <div class="warn">
+                            <b>2 <small>de 6</small></b>
+                            <span class="es" lang="es-PY">bajo el 80% de la meta</span>
+                            <span class="pt" lang="pt-BR">abaixo de 80% da meta</span>
+                        </div>
+                    </div>
+
+                    <div class="lt-tm-rank">
+                        <div class="lt-tm-scale-label"><span lang="es-PY">Tiempo útil por persona</span><span class="k-pt" lang="pt-BR">Tempo útil por pessoa</span></div>
+                        <div class="lt-tm-goalrow" aria-hidden="true"><div class="lt-tm-goal"><span>Meta 5h</span></div></div>
+                        <ol class="lt-tm-rows">
+                        <li class="lt-tm-row ok">
+                            <span class="lt-tm-av">L</span>
+                            <span class="lt-tm-name">Lucía</span>
+                            <div class="lt-tm-bar"><i class="seg-tool" style="flex: 209;"></i><i class="seg-meet" style="flex: 100;"></i><i class="seg-web" style="flex: 50;"></i><i class="seg-idle" style="flex: 121;"></i></div>
+                            <b class="lt-tm-val">5h 09m</b>
+                            <span class="lt-tm-pct">103%</span>
+                        </li>
+                        <li class="lt-tm-row ok">
+                            <span class="lt-tm-av">C</span>
+                            <span class="lt-tm-name">Carlos</span>
+                            <div class="lt-tm-bar"><i class="seg-tool" style="flex: 202;"></i><i class="seg-meet" style="flex: 95;"></i><i class="seg-web" style="flex: 55;"></i><i class="seg-idle" style="flex: 128;"></i></div>
+                            <b class="lt-tm-val">4h 57m</b>
+                            <span class="lt-tm-pct">99%</span>
+                        </li>
+                        <li class="lt-tm-row ok">
+                            <span class="lt-tm-av">J</span>
+                            <span class="lt-tm-name">Julián</span>
+                            <div class="lt-tm-bar"><i class="seg-tool" style="flex: 181;"></i><i class="seg-meet" style="flex: 95;"></i><i class="seg-web" style="flex: 55;"></i><i class="seg-idle" style="flex: 149;"></i></div>
+                            <b class="lt-tm-val">4h 36m</b>
+                            <span class="lt-tm-pct">92%</span>
+                        </li>
+                        <li class="lt-tm-row mid">
+                            <span class="lt-tm-av">M</span>
+                            <span class="lt-tm-name">Marta</span>
+                            <div class="lt-tm-bar"><i class="seg-tool" style="flex: 164;"></i><i class="seg-meet" style="flex: 85;"></i><i class="seg-web" style="flex: 65;"></i><i class="seg-idle" style="flex: 166;"></i></div>
+                            <b class="lt-tm-val">4h 09m</b>
+                            <span class="lt-tm-pct">83%</span>
+                        </li>
+                        <li class="lt-tm-row low">
+                            <span class="lt-tm-av">D</span>
+                            <span class="lt-tm-name">Diego</span>
+                            <div class="lt-tm-bar"><i class="seg-tool" style="flex: 145;"></i><i class="seg-meet" style="flex: 80;"></i><i class="seg-web" style="flex: 70;"></i><i class="seg-idle" style="flex: 185;"></i></div>
+                            <b class="lt-tm-val">3h 45m</b>
+                            <span class="lt-tm-pct">75%</span>
+                        </li>
+                        <li class="lt-tm-row low">
+                            <span class="lt-tm-av">A</span>
+                            <span class="lt-tm-name">Ana<em class="lt-tm-tag">Entra 11:00</em></span>
+                            <div class="lt-tm-bar"><i class="seg-none" style="flex: 180;"></i><i class="seg-tool" style="flex: 150;"></i><i class="seg-meet" style="flex: 60;"></i><i class="seg-web" style="flex: 35;"></i><i class="seg-idle" style="flex: 55;"></i></div>
+                            <b class="lt-tm-val">3h 30m</b>
+                            <span class="lt-tm-pct">70%</span>
+                        </li>
+                        </ol>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 05 · Copiloto del gestor -->
+        <section class="slide" data-title="Copiloto del gestor · Copiloto do gestor" id="slide-5">
+            <div class="slide-context-bg lt-bg">
+                <div class="lt-dots"></div>
+                <div class="lt-glow" style="width: 55vw; height: 45vw; right: -12vw; top: 8vh; background: rgba(255, 202, 40, 0.08);"></div>
+            </div>
+
+            <div class="slide-content lt lt-cp">
+                <div class="lt-cp-side">
+                    <div class="anim-group anim-1">
+                        <div class="lt-kicker"><span lang="es-PY">Copiloto del gestor</span><span class="k-pt" lang="pt-BR">Copiloto do gestor</span></div>
+                        <h2 class="lt-h" lang="es-PY">La IA prepara.<br/><em>Usted decide.</em></h2>
+                        <span class="pt lt-h-pt" lang="pt-BR">A IA prepara. Você decide.</span>
+                    </div>
+
+                    <div class="lt-cp-feeds anim-group anim-2">
+                        <div class="lt-cp-label"><span lang="es-PY">Lo que el copiloto lee</span><span class="k-pt" lang="pt-BR">O que o copiloto lê</span></div>
+                        <ul>
+                            <li>
+                                <i class="ph-fill ph-target" aria-hidden="true"></i>
+                                <div><span class="es" lang="es-PY">Jornada y meta</span><span class="pt" lang="pt-BR">Jornada e meta</span></div>
+                            </li>
+                            <li>
+                                <i class="ph-fill ph-browsers" aria-hidden="true"></i>
+                                <div><span class="es" lang="es-PY">Herramientas y sitios</span><span class="pt" lang="pt-BR">Ferramentas e sites</span></div>
+                            </li>
+                            <li>
+                                <i class="ph-fill ph-calendar-check" aria-hidden="true"></i>
+                                <div><span class="es" lang="es-PY">Reuniones y ausencias</span><span class="pt" lang="pt-BR">Reuniões e ausências</span></div>
+                            </li>
+                            <li>
+                                <i class="ph-fill ph-shield-warning" aria-hidden="true"></i>
+                                <div><span class="es" lang="es-PY">Links restringidos</span><span class="pt" lang="pt-BR">Links restritos</span></div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="lt-note anim-group anim-4">
+                        <span class="es" lang="es-PY">Ejemplo ilustrativo con datos de demostración.</span>
+                        <span class="pt" lang="pt-BR">Exemplo ilustrativo com dados de demonstração.</span>
+                    </div>
+                </div>
+
+                <div class="lt-cp-flow" aria-hidden="true"><span></span></div>
+
+                <article class="lt-cp-report anim-group anim-3">
+                    <div class="lt-cp-head">
+                        <span class="lt-cp-badge"><i class="ph-fill ph-sparkle" aria-hidden="true"></i></span>
+                        <div>
+                            <span class="es lt-cp-title" lang="es-PY">Informe ejecutivo</span>
+                            <span class="pt" lang="pt-BR">Relatório executivo · Equipo Comercial · Semana 43</span>
+                        </div>
+                        <span class="lt-cp-status"><i></i>Copiloto IA</span>
+                    </div>
+
+                    <div class="lt-cp-kpis">
+                        <div>
+                            <b>87%</b>
+                            <span class="es" lang="es-PY">de la meta</span>
+                            <span class="pt" lang="pt-BR">da meta</span>
+                        </div>
+                        <div>
+                            <b>18%</b>
+                            <span class="es" lang="es-PY">en reuniones</span>
+                            <span class="pt" lang="pt-BR">em reuniões</span>
+                        </div>
+                        <div class="warn">
+                            <b>1</b>
+                            <span class="es" lang="es-PY">alerta de riesgo</span>
+                            <span class="pt" lang="pt-BR">alerta de risco</span>
+                        </div>
+                    </div>
+
+                    <ul class="lt-cp-insights">
+                        <li class="att">
+                            <span class="lt-cp-tag">Atención</span>
+                            <div>
+                                <span class="es" lang="es-PY">Ana empieza a las 11h: el desvío es de horario, no de ritmo.</span>
+                                <span class="pt" lang="pt-BR">Ana começa às 11h: o desvio é de horário, não de ritmo.</span>
+                            </div>
+                        </li>
+                        <li class="opp">
+                            <span class="lt-cp-tag">Oportunidad</span>
+                            <div>
+                                <span class="es" lang="es-PY">Las reuniones fragmentan la tarde: concentrarlas en un solo bloque.</span>
+                                <span class="pt" lang="pt-BR">As reuniões fragmentam a tarde: concentrá-las em um só bloco.</span>
+                            </div>
+                        </li>
+                        <li class="risk">
+                            <span class="lt-cp-tag">Riesgo</span>
+                            <div>
+                                <span class="es" lang="es-PY">Un acceso a link restringido, con grabación HD como evidencia.</span>
+                                <span class="pt" lang="pt-BR">Um acesso a link restrito, com gravação HD como evidência.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <!-- 06 · Inversión -->
+        <section class="slide" data-title="Inversión · Investimento" id="slide-6">
+            <div class="slide-context-bg lt-bg">
+                <div class="lt-dots"></div>
+                <div class="lt-glow" style="width: 55vw; height: 40vw; right: -12vw; top: 15vh; background: rgba(255, 202, 40, 0.07);"></div>
+            </div>
+
+            <div class="slide-content lt lt-pr">
+                <div class="lt-pr-side">
+                    <div class="anim-group anim-1">
+                        <div class="lt-kicker"><span lang="es-PY">Inversión</span><span class="k-pt" lang="pt-BR">Investimento</span></div>
+                        <h2 class="lt-h" lang="es-PY">Un valor claro<br/><em>para cada tamaño.</em></h2>
+                        <span class="pt lt-h-pt" lang="pt-BR">Um valor claro para cada tamanho de equipe.</span>
+                    </div>
+
+                    <div class="lt-pr-ctrl anim-group anim-2">
+                        <label>
+                            <span class="lt-pr-ctrl-k"><span lang="es-PY">Moneda</span><span class="k-pt" lang="pt-BR">Moeda</span></span>
+                            <select id="pr-currency">
+                                <option value="PYG">Gs. · Guaraní</option>
+                                <option value="USD">US$ · Dólar</option>
+                                <option value="BRL">R$ · Real</option>
+                            </select>
+                        </label>
+                        <label>
+                            <span class="lt-pr-ctrl-k"><span lang="es-PY">Cobro</span><span class="k-pt" lang="pt-BR">Cobrança</span></span>
+                            <select id="pr-basis">
+                                <option value="user">Por colaborador / mes · Por colaborador / mês</option>
+                                <option value="total">Total mensual del rango · Total mensal da faixa</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="lt-note anim-group anim-4">
+                        <span class="es" lang="es-PY">Valores editables. Se guardan automáticamente en este equipo.</span>
+                        <span class="pt" lang="pt-BR">Valores editáveis. Ficam salvos automaticamente neste computador.</span>
+                    </div>
+                </div>
+
+                <article class="lt-pr-card anim-group anim-3">
+                    <div class="lt-pr-head">
+                        <span class="es" lang="es-PY">Tamaño del equipo</span>
+                        <span class="es" lang="es-PY">Valor</span>
+                    </div>
+                    <ol class="lt-pr-rows">
+                            <li class="lt-pr-row">
+                                <div class="lt-pr-tier"><b>0<span class="d">–</span>100</b><span class="es" lang="es-PY">colaboradores</span><span class="pt" lang="pt-BR">colaboradores</span></div>
+                                <label class="lt-pr-field">
+                                    <span class="lt-pr-cur" data-cur>Gs.</span>
+                                    <input type="text" inputmode="decimal" autocomplete="off" data-tier="0" placeholder="0" aria-label="Valor · 0 – 100 colaboradores"/>
+                                </label>
+                                <div class="lt-pr-basis"><span class="es" data-basis-es>por colaborador / mes</span><span class="pt" data-basis-pt>por colaborador / mês</span></div>
+                            </li>
+                            <li class="lt-pr-row">
+                                <div class="lt-pr-tier"><b>101<span class="d">–</span>500</b><span class="es" lang="es-PY">colaboradores</span><span class="pt" lang="pt-BR">colaboradores</span></div>
+                                <label class="lt-pr-field">
+                                    <span class="lt-pr-cur" data-cur>Gs.</span>
+                                    <input type="text" inputmode="decimal" autocomplete="off" data-tier="1" placeholder="0" aria-label="Valor · 101 – 500 colaboradores"/>
+                                </label>
+                                <div class="lt-pr-basis"><span class="es" data-basis-es>por colaborador / mes</span><span class="pt" data-basis-pt>por colaborador / mês</span></div>
+                            </li>
+                            <li class="lt-pr-row">
+                                <div class="lt-pr-tier"><b>501<span class="d">–</span>1.000</b><span class="es" lang="es-PY">colaboradores</span><span class="pt" lang="pt-BR">colaboradores</span></div>
+                                <label class="lt-pr-field">
+                                    <span class="lt-pr-cur" data-cur>Gs.</span>
+                                    <input type="text" inputmode="decimal" autocomplete="off" data-tier="2" placeholder="0" aria-label="Valor · 501 – 1.000 colaboradores"/>
+                                </label>
+                                <div class="lt-pr-basis"><span class="es" data-basis-es>por colaborador / mes</span><span class="pt" data-basis-pt>por colaborador / mês</span></div>
+                            </li>
+                            <li class="lt-pr-row">
+                                <div class="lt-pr-tier"><b>1.001<span class="d">–</span>2.000</b><span class="es" lang="es-PY">colaboradores</span><span class="pt" lang="pt-BR">colaboradores</span></div>
+                                <label class="lt-pr-field">
+                                    <span class="lt-pr-cur" data-cur>Gs.</span>
+                                    <input type="text" inputmode="decimal" autocomplete="off" data-tier="3" placeholder="0" aria-label="Valor · 1.001 – 2.000 colaboradores"/>
+                                </label>
+                                <div class="lt-pr-basis"><span class="es" data-basis-es>por colaborador / mes</span><span class="pt" data-basis-pt>por colaborador / mês</span></div>
+                            </li>
+                            <li class="lt-pr-row">
+                                <div class="lt-pr-tier"><b>2.001<span class="d">–</span>5.000</b><span class="es" lang="es-PY">colaboradores</span><span class="pt" lang="pt-BR">colaboradores</span></div>
+                                <label class="lt-pr-field">
+                                    <span class="lt-pr-cur" data-cur>Gs.</span>
+                                    <input type="text" inputmode="decimal" autocomplete="off" data-tier="4" placeholder="0" aria-label="Valor · 2.001 – 5.000 colaboradores"/>
+                                </label>
+                                <div class="lt-pr-basis"><span class="es" data-basis-es>por colaborador / mes</span><span class="pt" data-basis-pt>por colaborador / mês</span></div>
+                            </li>
+                    </ol>
+                    <div class="lt-pr-foot">
+                        <span class="pt" lang="pt-BR">Tamanho da equipe · Valor</span>
+                        <button type="button" class="lt-pr-clear" id="pr-clear"><i class="ph ph-arrow-counter-clockwise"></i><span>Limpiar · Limpar</span></button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 07 · Cotización -->
+        <section class="slide" data-title="Cotización · Cotação" id="slide-7">
+            <div class="slide-context-bg lt-bg">
+                <div class="lt-floor" style="opacity: 0.6;"></div>
+                <div class="lt-glow" style="width: 55vw; height: 40vw; left: -10vw; top: 20vh; background: rgba(255, 202, 40, 0.08);"></div>
+            </div>
+
+            <div class="slide-content lt lt-q">
+                <div class="lt-q-side">
+                    <div class="anim-group anim-1">
+                        <div class="lt-kicker"><span lang="es-PY">Cotización</span><span class="k-pt" lang="pt-BR">Cotação</span></div>
+                        <h2 class="lt-h" lang="es-PY">Su valor,<br/><em>al instante.</em></h2>
+                        <span class="pt lt-h-pt" lang="pt-BR">Seu valor, na hora.</span>
+                    </div>
+
+                    <div class="lt-q-in anim-group anim-2">
+                        <label for="q-qty" class="lt-q-label"><span lang="es-PY">¿Cuántos colaboradores?</span><span class="k-pt" lang="pt-BR">Quantos colaboradores?</span></label>
+                        <input type="text" id="q-qty" inputmode="numeric" autocomplete="off" placeholder="0" maxlength="5"/>
+                        <div class="lt-q-label lt-q-or"><span lang="es-PY">o elija el rango</span><span class="k-pt" lang="pt-BR">ou escolha a faixa</span></div>
+                        <div class="lt-q-chips" id="q-chips"><button type="button" class="lt-q-chip" data-faixa="0">0 – 100</button><button type="button" class="lt-q-chip" data-faixa="1">101 – 500</button><button type="button" class="lt-q-chip" data-faixa="2">501 – 1.000</button><button type="button" class="lt-q-chip" data-faixa="3">1.001 – 2.000</button><button type="button" class="lt-q-chip" data-faixa="4">2.001 – 5.000</button></div>
+                    </div>
+                </div>
+
+                <article class="lt-q-card anim-group anim-3" id="q-card" data-state="empty">
+                    <div class="lt-q-range">
+                        <span class="lt-q-range-k"><span lang="es-PY">Rango</span><span class="k-pt" lang="pt-BR">Faixa</span></span>
+                        <b id="q-range">—</b>
+                        <span class="lt-q-range-u"><span lang="es-PY">colaboradores</span></span>
+                    </div>
+
+                    <div class="lt-q-price">
+                        <span class="lt-q-cur" id="q-cur">Gs.</span>
+                        <b id="q-price">—</b>
+                    </div>
+                    <div class="lt-q-basis"><span class="es" id="q-basis-es">por colaborador / mes</span><span class="pt" id="q-basis-pt">por colaborador / mês</span></div>
+
+                    <div class="lt-q-total" id="q-total" hidden>
+                        <span class="lt-q-total-k"><span lang="es-PY">Total mensual estimado</span><span class="k-pt" lang="pt-BR">Total mensal estimado</span></span>
+                        <div><span class="lt-q-total-calc" id="q-total-calc"></span><b id="q-total-val"></b></div>
+                    </div>
+
+                    <div class="lt-q-msg" id="q-msg" hidden>
+                        <i class="ph-fill ph-info" aria-hidden="true"></i>
+                        <div><span class="es" id="q-msg-es"></span><span class="pt" id="q-msg-pt"></span></div>
+                        <button type="button" class="lt-q-go" id="q-go" hidden><i class="ph ph-arrow-left"></i><span>Definir valores</span></button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 08 · Cierre -->
+        <section class="slide" data-title="Cierre · Encerramento" id="slide-8">
             <div class="slide-context-bg lt-bg">
                 <div class="lt-floor"></div>
                 <div class="lt-glow" style="width: 55vw; height: 55vw; left: -15vw; top: 10vh; background: rgba(255, 202, 40, 0.08);"></div>
@@ -410,28 +573,11 @@
                 </div>
 
                 <div class="lt-close-copy">
-                    <div class="lt-kicker anim-group anim-1"><span lang="es-PY">Próximo paso</span><span class="k-pt" lang="pt-BR">Próximo passo</span></div>
+                    <div class="lt-kicker anim-group anim-1"><span lang="es-PY">Cierre</span><span class="k-pt" lang="pt-BR">Encerramento</span></div>
                     <h2 class="anim-group anim-1 lt-close-title" lang="es-PY">Ahora <mark>lo ves.</mark><br/>Ahora <mark>lo controlás.</mark></h2>
                     <span class="anim-group anim-2 pt lt-close-pt" lang="pt-BR">Agora você enxerga. Agora você controla.</span>
 
-                    <div class="lt-next anim-group anim-3">
-                        <div class="lt-next-step">
-                            <b>01</b>
-                            <div>
-                                <span class="es" lang="es-PY">Vea la plataforma en vivo, aquí en el stand.</span>
-                                <span class="pt" lang="pt-BR">Veja a plataforma ao vivo, aqui no estande.</span>
-                            </div>
-                        </div>
-                        <div class="lt-next-step">
-                            <b>02</b>
-                            <div>
-                                <span class="es" lang="es-PY">Defina un piloto con un equipo de su empresa.</span>
-                                <span class="pt" lang="pt-BR">Defina um piloto com uma equipe da sua empresa.</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="lt-cta anim-group anim-4">
+                    <div class="lt-cta anim-group anim-3" data-open-leads role="button" tabindex="0">
                         <div>
                             <span class="es" lang="es-PY">Solicite su demostración</span>
                             <span class="pt" lang="pt-BR">Solicite sua demonstração</span>
@@ -447,6 +593,121 @@
     <div class="nav-hitbox left" id="nav-area-prev"><div class="nav-arrow"><i class="ph ph-caret-left"></i></div></div>
     <div class="nav-hitbox right" id="nav-area-next"><div class="nav-arrow"><i class="ph ph-caret-right"></i></div></div>
 
+    <!-- =========================================================================
+         CAPTAÇÃO DE LEADS — 1 formulário, coleta em cache local (sem envio a agente)
+         ========================================================================= -->
+    <div class="lead-overlay" id="lead-overlay" role="dialog" aria-modal="true" aria-labelledby="lead-title">
+        <div class="lead-shell">
+
+            <div class="lead-header">
+                <div>
+                    <h2 id="lead-title"><span lang="es-PY">Captación de leads</span><span class="pt" lang="pt-BR">Captação de leads</span></h2>
+                    <p>
+                        <span lang="es-PY">Los datos quedan guardados en este equipo. Al final del día, exporte la planilla para importarla al CRM.</span>
+                        <span class="pt" lang="pt-BR">Os dados ficam salvos neste computador. No fim do dia, exporte a planilha para importar no CRM.</span>
+                    </p>
+                    <div class="lead-aviso" id="lead-aviso"></div>
+                </div>
+                <button class="btn-icon" id="btn-close-leads" title="Cerrar · Fechar (Esc)"><i class="ph ph-x"></i></button>
+            </div>
+
+            <div class="lead-tabs">
+                <button class="lead-tab active" id="tab-form" data-panel="panel-form" type="button">Nuevo lead<small>Novo lead</small></button>
+                <button class="lead-tab" id="tab-list" data-panel="panel-list" type="button">Leads capturados (<span id="tab-list-count">0</span>)<small>Leads capturados</small></button>
+            </div>
+
+            <!-- ---------- PAINEL: NOVO LEAD ---------- -->
+            <div class="lead-panel active" id="panel-form">
+                <form id="lead-form" autocomplete="off" novalidate>
+                    <div class="lead-form-grid">
+
+                        <div class="lead-field col-6" data-field>
+                            <label for="lead-nome">Nombre completo<span class="pt">Nome completo</span><span class="req">*</span></label>
+                            <input type="text" id="lead-nome" name="nome" placeholder="Ej: Carlos Benítez" autocomplete="off">
+                        </div>
+
+                        <div class="lead-field col-6" data-field>
+                            <label for="lead-empresa">Empresa<span class="pt">Empresa</span><span class="req">*</span></label>
+                            <input type="text" id="lead-empresa" name="empresa" placeholder="Ej: Distribuidora Guaraní S.A." autocomplete="off">
+                        </div>
+
+                        <div class="lead-field col-4" data-field>
+                            <label for="lead-pais">País<span class="pt">País</span><span class="req">*</span></label>
+                            <select id="lead-pais" name="pais"></select>
+                            <input type="text" id="lead-pais-outro" name="paisOutro" placeholder="Nombre del país · Nome do país" style="display:none">
+                        </div>
+
+                        <div class="lead-field col-8" data-field>
+                            <label for="lead-telefone">Teléfono / WhatsApp<span class="pt">Telefone / WhatsApp</span><span class="req">*</span></label>
+                            <div class="lead-phone">
+                                <span class="lead-dial" id="lead-dial">+595</span>
+                                <input type="tel" id="lead-telefone" name="telefone" inputmode="tel" placeholder="981 123 456" autocomplete="off">
+                            </div>
+                            <span class="lead-hint" id="lead-telefone-hint"></span>
+                        </div>
+
+                        <div class="lead-field col-4" data-field>
+                            <label for="lead-estado" id="lead-estado-label"><span id="lead-estado-es">Departamento</span><span class="pt" id="lead-estado-pt">Departamento</span></label>
+                            <select id="lead-estado" name="estado"></select>
+                            <input type="text" id="lead-estado-txt" name="estadoTxt" placeholder="Estado / Provincia" style="display:none" autocomplete="off">
+                        </div>
+
+                        <div class="lead-field col-4" data-field>
+                            <label for="lead-cidade">Ciudad<span class="pt">Cidade</span></label>
+                            <input type="text" id="lead-cidade" name="cidade" placeholder="Ej: Ciudad del Este" autocomplete="off">
+                        </div>
+
+                        <div class="lead-field col-4" data-field>
+                            <label for="lead-email">E-mail<span class="pt">E-mail</span></label>
+                            <input type="email" id="lead-email" name="email" placeholder="contacto@empresa.com.py" autocomplete="off">
+                        </div>
+
+                    </div>
+
+                    <div class="lead-crm">
+                        <i class="ph ph-funnel"></i>
+                        <span><span lang="es-PY">Embudo en el CRM</span> · <span lang="pt-BR">Funil no CRM</span>: <b id="lead-funil-label"></b></span>
+                    </div>
+
+                    <div class="lead-form-actions">
+                        <button type="submit" class="lead-btn lead-btn-primary">
+                            <i class="ph ph-floppy-disk"></i>
+                            <span>Guardar y nuevo lead<small>Salvar e novo lead</small></span>
+                        </button>
+                        <p class="lead-form-note"><kbd>Ctrl</kbd> + <kbd>Enter</kbd> · <span lang="es-PY">también guarda</span> / <span lang="pt-BR">também salva</span></p>
+                    </div>
+                </form>
+            </div>
+
+            <!-- ---------- PAINEL: LEADS CAPTURADOS ---------- -->
+            <div class="lead-panel" id="panel-list">
+                <div class="lead-list-actions">
+                    <button class="lead-btn lead-btn-primary" id="btn-export-xlsx" type="button">
+                        <i class="ph ph-file-xls"></i><span>Exportar Excel (.xlsx)<small>Exportar Excel (.xlsx)</small></span>
+                    </button>
+                    <button class="lead-btn" id="btn-export-csv" type="button">
+                        <i class="ph ph-file-csv"></i><span>Exportar CSV<small>Exportar CSV</small></span>
+                    </button>
+                    <button class="lead-btn lead-btn-danger" id="btn-clear-leads" type="button">
+                        <i class="ph ph-trash"></i><span>Borrar todo<small>Apagar tudo</small></span>
+                    </button>
+                    <p class="lead-form-note" id="lead-export-status"></p>
+                </div>
+                <div class="lead-table-wrap" id="lead-table-wrap"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="lead-toast" id="lead-toast" role="status" aria-live="polite">
+        <i class="ph ph-check-circle"></i>
+        <span><span id="lead-toast-es"></span><span class="pt" id="lead-toast-pt"></span></span>
+    </div>
+
+    <script src="vendor/xlsx.full.min.js"></script>
     <script src="js/presentation.js"></script>
+    <script src="js/leads.js"></script>
+    <script src="js/pricing.js"></script>
+    <script src="js/quote.js"></script>
 </body>
 </html>
