@@ -20,7 +20,11 @@
   const BRL_POR_UNIDADE = { BRL: 1, PYG: 0.00090, USD: 5.58 };
 
   const inputs = [...root.querySelectorAll('input[data-tier]')];
-  const selMoeda = document.getElementById('pr-currency');
+  // Dois seletores de moeda: o da tabela (Inversión) e o da Cotización (pra já
+  // mostrar o valor ao cliente na moeda certa sem precisar voltar de slide).
+  // Os dois ficam sincronizados com o mesmo estado -- mudar em qualquer um
+  // atualiza o outro e repinta tudo.
+  const selsMoeda = ['pr-currency', 'q-currency'].map(id => document.getElementById(id)).filter(Boolean);
   const selCobranca = document.getElementById('pr-basis');
   let st = { currency: 'PYG', basis: 'user', values: inputs.map(() => null) };
 
@@ -72,7 +76,7 @@
   }
 
   function pintar() {
-    selMoeda.value = st.currency;
+    selsMoeda.forEach(s => { s.value = st.currency; });
     selCobranca.value = st.basis;
     root.querySelectorAll('[data-cur]').forEach(el => { el.textContent = MOEDAS[st.currency].sym; });
     root.querySelectorAll('[data-basis-es]').forEach(el => { el.textContent = COBRANCA[st.basis][0]; });
@@ -90,12 +94,13 @@
     inp.addEventListener('focus', () => inp.select());
   });
 
-  selMoeda.addEventListener('change', () => {
+  selsMoeda.forEach(sel => sel.addEventListener('change', () => {
     // st.values fica sempre em BRL -- trocar a moeda só muda a conversão exibida,
-    // nunca o valor guardado (ver formatar/ler).
-    st.currency = selMoeda.value;
+    // nunca o valor guardado (ver formatar/ler). Qualquer um dos dois seletores
+    // muda o mesmo estado; pintar() sincroniza o outro.
+    st.currency = sel.value;
     salvar(); pintar();
-  });
+  }));
   selCobranca.addEventListener('change', () => { st.basis = selCobranca.value; salvar(); pintar(); });
 
   document.getElementById('pr-clear').addEventListener('click', () => {

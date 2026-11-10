@@ -87,11 +87,12 @@
 
   document.addEventListener('lite:pricing', render);
 
-  // Digitar na cotação nunca navega os slides.
+  // Digitar ou escolher na cotação nunca navega os slides (inclui o select de
+  // moeda: senão as setas do teclado trocariam de slide em vez de moeda).
   document.addEventListener('keydown', e => {
     const t = e.target;
-    if (!(t instanceof Element) || !root.contains(t) || !t.matches('input')) return;
-    if (e.key === 'Enter') { e.preventDefault(); t.blur(); }
+    if (!(t instanceof Element) || !root.contains(t) || !t.matches('input,select')) return;
+    if (e.key === 'Enter' && t.matches('input')) { e.preventDefault(); t.blur(); }
     if (e.key !== 'Escape') e.stopPropagation();
   }, true);
 
