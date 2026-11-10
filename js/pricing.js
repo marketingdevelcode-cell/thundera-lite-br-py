@@ -26,11 +26,11 @@
 
   // Faixas de colaboradores (a mesma lista alimenta a tabela e o slide de cotação)
   const FAIXAS = [
-    { min: 0, max: 100, label: '0 – 100' },
-    { min: 101, max: 500, label: '101 – 500' },
-    { min: 501, max: 1000, label: '501 – 1.000' },
-    { min: 1001, max: 2000, label: '1.001 – 2.000' },
-    { min: 2001, max: 5000, label: '2.001 – 5.000' }
+    { min: 0, max: 20, label: '0 – 20' },
+    { min: 21, max: 50, label: '21 – 50' },
+    { min: 51, max: 75, label: '51 – 75' },
+    { min: 76, max: 100, label: '76 – 100' },
+    { min: 101, max: 999999, label: '101+' }
   ];
 
   function avisar() { document.dispatchEvent(new CustomEvent('lite:pricing')); }
