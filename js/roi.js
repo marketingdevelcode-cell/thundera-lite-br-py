@@ -1,13 +1,13 @@
 /* Thundera IA Lite — slide de ROI: a partir da quantidade de colaboradores e das horas
    recuperadas por dia, calcula o retorno mensal/anual em Guarani e Real, usando o
-   salário de referência (Gs. 2.600.000 PY · R$ 2.100 BR) sobre uma jornada de 220h/mês. */
+   salário de referência (Gs. 2.600.000 PY · R$ 3.000 BR) sobre uma jornada de 220h/mês. */
 (() => {
   'use strict';
   const root = document.querySelector('.slide[data-title^="Retorno de la inversión"]');
   if (!root) return;
 
   const SAL_PY = 2600000;  // Gs. / mes — salario de referencia (Paraguay)
-  const SAL_BR = 2100;     // R$ / mes — salario de referencia (Brasil)
+  const SAL_BR = 3000;     // R$ / mes — salario de referencia (Brasil)
   const HORAS_MES = 220;   // jornada mensal de referencia
   const DIAS_UTEIS = 22;
 
