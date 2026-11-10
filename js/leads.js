@@ -1,12 +1,21 @@
 /* Thundera IA Lite — captação de leads.
-   Um único formulário. Os leads ficam só em cache local (localStorage) e saem por
-   planilha (.xlsx / .csv) pronta para importar no CRM. NÃO há envio a nenhum servidor/agente. */
+   Um único formulário. O lead é salvo primeiro em cache local (localStorage) —
+   isso NUNCA depende de rede — e a planilha (.xlsx / .csv) continua sendo a cópia
+   de segurança de verdade. Depois de salvar, uma chamada best-effort tenta
+   registrar o card no CRM (organização + contato + negociação no funil abaixo);
+   se falhar (sem internet, servidor dormindo...), o lead continua intacto aqui e
+   a exportação manual cobre o que o envio não cobriu — NÃO há fila de reenvio
+   nem agente de WhatsApp (ver "Para quem mantém" no fim do arquivo). */
 (() => {
   'use strict';
 
   // ---------- Configuração do CRM (colunas da planilha exportada) ----------
   const CRM_FUNIL = '[ThunderaLite] - Qualificação';
   const CRM_ORIGEM = 'Feiras e Eventos';
+
+  // Mesmo servidor do dashboard-com-api que a Máquina.ISP usa (api/routes/eventos.py),
+  // endpoint dedicado que só cria o card no CRM, sem acionar agente nenhum.
+  const CRM_API = 'https://dashboard-com-api.onrender.com/eventos/thundera-leads';
 
   const LEADS_KEY = 'thundera_lite_leads';
   const EXPORT_KEY = 'thundera_lite_leads_export';
@@ -277,6 +286,24 @@
 
   function emailValido(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
 
+  // ---------- Envio best-effort ao CRM (não bloqueia nem atrasa o salvamento local) ----------
+  function enviarAoCrm(lead) {
+    const corpo = {
+      nome: lead.nome, empresa: lead.empresa, telefone: lead.telefone,
+      email: lead.email || null, pais: lead.pais || null, estado: lead.estado || null,
+      cidade: lead.cidade || null
+    };
+    fetch(CRM_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(corpo)
+    }).then(r => {
+      if (!r.ok) console.warn('Thundera Lite: CRM recusou o lead (' + r.status + '). Fica só local; exporte a planilha.');
+    }).catch(() => {
+      console.warn('Thundera Lite: sem conexão com o CRM agora. O lead fica só local; exporte a planilha.');
+    });
+  }
+
   // ---------- Validação + salvar ----------
   const val = id => ($(id).value || '').trim();
 
@@ -341,6 +368,7 @@
     leads.push(lead);
     const salvouNoDisco = persistLeads(leads);
     refreshCount();
+    enviarAoCrm(lead);
 
     if (!salvouNoDisco) toast('Guardado solo en memoria: exporte la planilla ahora.', 'Salvo só em memória: exporte a planilha agora.', 'warn');
     else toast('Lead de ' + lead.nome.split(/\s+/)[0] + ' guardado. Total: ' + leads.length + '.', 'Lead salvo.');
