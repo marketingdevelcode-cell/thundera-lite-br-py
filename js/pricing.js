@@ -12,6 +12,13 @@
     total: ['total mensual del rango', 'total mensal da faixa']
   };
 
+  // Cotação fixa (Google, 10/11/2026 ~21h UTC) -- quanto vale 1 unidade de cada
+  // moeda EM REAIS. É a base de conversão: todo valor é guardado em BRL por
+  // baixo dos panos, e convertido na hora de exibir/ler, qualquer que seja a
+  // moeda escolhida no seletor. Não é cotação ao vivo -- atualizar aqui se a
+  // taxa mudar muito antes de uma apresentação.
+  const BRL_POR_UNIDADE = { BRL: 1, PYG: 0.00090, USD: 5.58 };
+
   const inputs = [...root.querySelectorAll('input[data-tier]')];
   const selMoeda = document.getElementById('pr-currency');
   const selCobranca = document.getElementById('pr-basis');
@@ -40,12 +47,17 @@
     avisar();
   }
 
+  // `n` é sempre o valor em BRL (como é guardado). Converte pra moeda exibida
+  // antes de formatar -- é isso que faz trocar de moeda refletir o valor certo
+  // em vez de só reformatar o mesmo número.
   function formatar(n) {
     if (n == null) return '';
-    return new Intl.NumberFormat('es-PY', { minimumFractionDigits: 0, maximumFractionDigits: MOEDAS[st.currency].dec }).format(n);
+    const convertido = n / BRL_POR_UNIDADE[st.currency];
+    return new Intl.NumberFormat('es-PY', { minimumFractionDigits: 0, maximumFractionDigits: MOEDAS[st.currency].dec }).format(convertido);
   }
 
-  // "1.250.000" | "49,90" | "49.90" -> número
+  // "1.250.000" | "49,90" | "49.90" -> número NA MOEDA EXIBIDA, depois convertido
+  // pra BRL (a unidade que fica guardada em `st.values`).
   function ler(txt) {
     let s = String(txt).replace(/[^\d.,]/g, '');
     if (!s) return null;
@@ -54,8 +66,9 @@
     else s = s.replace(/\./g, '');
     const n = parseFloat(s);
     if (!isFinite(n) || n < 0) return null;
-    const f = Math.pow(10, MOEDAS[st.currency].dec);
-    return Math.round(n * f) / f;
+    const emBrl = n * BRL_POR_UNIDADE[st.currency];
+    // 2 casas decimais de BRL bastam de sobra pra qualquer moeda suportada.
+    return Math.round(emBrl * 100) / 100;
   }
 
   function pintar() {
@@ -78,9 +91,9 @@
   });
 
   selMoeda.addEventListener('change', () => {
+    // st.values fica sempre em BRL -- trocar a moeda só muda a conversão exibida,
+    // nunca o valor guardado (ver formatar/ler).
     st.currency = selMoeda.value;
-    // moedas sem centavos arredondam os valores já digitados
-    st.values = st.values.map(v => (v == null ? null : Math.round(v * Math.pow(10, MOEDAS[st.currency].dec)) / Math.pow(10, MOEDAS[st.currency].dec)));
     salvar(); pintar();
   });
   selCobranca.addEventListener('change', () => { st.basis = selCobranca.value; salvar(); pintar(); });
