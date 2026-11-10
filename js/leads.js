@@ -291,7 +291,7 @@
     const corpo = {
       nome: lead.nome, empresa: lead.empresa, telefone: lead.telefone,
       email: lead.email || null, pais: lead.pais || null, estado: lead.estado || null,
-      cidade: lead.cidade || null
+      cidade: lead.cidade || null, observacoes: lead.observacoes || null
     };
     fetch(CRM_API, {
       method: 'POST',
@@ -362,6 +362,7 @@
       pais: p.code === 'XX' ? val('lead-pais-outro') : p.nome,
       estado: p.divisoes ? selEstado.value : val('lead-estado-txt'),
       cidade: val('lead-cidade'),
+      observacoes: val('lead-observacoes'),
       funil: CRM_FUNIL
     };
 
@@ -440,6 +441,7 @@
     ['pais', 'País'],
     ['estado', 'Estado / Departamento'],
     ['cidade', 'Cidade'],
+    ['observacoes', 'Observações'],
     ['capturadoEm', 'Data/Hora']
   ];
 
@@ -461,7 +463,7 @@
       return r;
     });
     const ws = XLSX.utils.json_to_sheet(dados, { header: COLUNAS.map(c => c[1]) });
-    ws['!cols'] = [{ wch: 30 }, { wch: 18 }, { wch: 26 }, { wch: 28 }, { wch: 30 }, { wch: 20 }, { wch: 14 }, { wch: 22 }, { wch: 20 }, { wch: 17 }];
+    ws['!cols'] = [{ wch: 30 }, { wch: 18 }, { wch: 26 }, { wch: 28 }, { wch: 30 }, { wch: 20 }, { wch: 14 }, { wch: 22 }, { wch: 20 }, { wch: 40 }, { wch: 17 }];
     ws['!autofilter'] = { ref: XLSX.utils.encode_range({ s: { c: 0, r: 0 }, e: { c: COLUNAS.length - 1, r: dados.length } }) };
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Leads');
