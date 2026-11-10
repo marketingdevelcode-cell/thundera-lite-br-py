@@ -2,7 +2,7 @@
    (ou escolhe a faixa) e o valor cadastrado na tabela (slide anterior) aparece sozinho. */
 (() => {
   'use strict';
-  const root = document.getElementById('slide-7');
+  const root = document.querySelector('.slide[data-title^="Cotización"]');
   const P = () => window.LitePricing;
   if (!root) return;
 

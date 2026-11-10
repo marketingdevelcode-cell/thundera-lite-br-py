@@ -19,7 +19,7 @@
             <img alt="Thundera IA Lite" src="assets/logo_lite.png" style="height: 4.2vh; display: block;"/>
         </div>
         <div class="ui-controls">
-            <div class="slide-counter font-satoshi"><span id="current-slide">01</span> / <span id="total-slides">09</span></div>
+            <div class="slide-counter font-satoshi"><span id="current-slide">01</span> / <span id="total-slides">10</span></div>
             <button class="btn-icon" id="btn-toggle-eye" title="Ocultar diapositiva · Ocultar slide (O)"><i class="ph ph-eye"></i></button>
             <button class="btn-icon btn-icon-badge" id="btn-leads" title="Captar lead (L) · Captar lead (L)"><i class="ph ph-user-plus"></i><span class="lead-count" id="lead-count">0</span></button>
             <button class="btn-icon" id="btn-map" title="Mapa (M)"><i class="ph ph-squares-four"></i></button>
@@ -449,8 +449,79 @@
             </div>
         </section>
 
-        <!-- 07 · Inversión -->
-        <section class="slide" data-title="Inversión · Investimento" id="slide-7">
+        <!-- 07 · Retorno de la inversión -->
+        <section class="slide" data-title="Retorno de la inversión · Retorno do investimento" id="slide-7">
+            <div class="slide-context-bg lt-bg">
+                <div class="lt-dots"></div>
+                <div class="lt-glow" style="width: 55vw; height: 40vw; right: -12vw; top: 15vh; background: rgba(255, 202, 40, 0.07);"></div>
+            </div>
+
+            <div class="slide-content lt lt-roi">
+                <div class="lt-roi-side">
+                    <div class="anim-group anim-1">
+                        <div class="lt-kicker"><span lang="es-PY">Retorno de la inversión</span><span class="k-pt" lang="pt-BR">Retorno do investimento</span></div>
+                        <h2 class="lt-h" lang="es-PY">El tiempo que recupera,<br/><em>convertido en dinero.</em></h2>
+                        <span class="pt lt-h-pt" lang="pt-BR">O tempo que você recupera, convertido em dinheiro.</span>
+                    </div>
+
+                    <div class="lt-roi-in anim-group anim-2">
+                        <label for="roi-qty" class="lt-q-label"><span lang="es-PY">¿Cuántos colaboradores?</span><span class="k-pt" lang="pt-BR">Quantos colaboradores?</span></label>
+                        <input type="text" id="roi-qty" inputmode="numeric" autocomplete="off" placeholder="0" maxlength="5"/>
+
+                        <div class="lt-q-label lt-q-or"><span lang="es-PY">Horas recuperadas por colaborador / día</span><span class="k-pt" lang="pt-BR">Horas recuperadas por colaborador / dia</span></div>
+                        <div class="lt-q-chips" id="roi-chips">
+                            <button type="button" class="lt-q-chip lt-roi-chip" data-horas="1">1h</button>
+                            <button type="button" class="lt-q-chip lt-roi-chip on" data-horas="2">2h</button>
+                            <button type="button" class="lt-q-chip lt-roi-chip" data-horas="3">3h</button>
+                        </div>
+                    </div>
+
+                    <div class="lt-note anim-group anim-4">
+                        <span class="es" lang="es-PY">Cálculo ilustrativo: salario de referencia Gs. 2.600.000 (PY) y R$ 2.100 (BR), jornada de 220h/mes.</span>
+                        <span class="pt" lang="pt-BR">Cálculo ilustrativo: salário de referência Gs. 2.600.000 (PY) e R$ 2.100 (BR), jornada de 220h/mês.</span>
+                    </div>
+                </div>
+
+                <article class="lt-roi-card anim-group anim-3" id="roi-card" data-state="empty">
+                    <div class="lt-roi-hours">
+                        <b id="roi-hours">—</b>
+                        <div>
+                            <span class="lt-roi-hours-k"><span lang="es-PY">Horas recuperadas / mes</span><span class="k-pt" lang="pt-BR">Horas recuperadas / mês</span></span>
+                            <span class="lt-roi-calc" id="roi-calc"></span>
+                        </div>
+                    </div>
+
+                    <div class="lt-roi-table">
+                        <div class="lt-roi-row lt-roi-head">
+                            <span></span>
+                            <span>Guaraní</span>
+                            <span>Real (BR)</span>
+                        </div>
+                        <div class="lt-roi-row">
+                            <span class="lt-roi-row-label">Retorno mensual · Retorno mensal</span>
+                            <b id="roi-py-mes">—</b>
+                            <b id="roi-br-mes">—</b>
+                        </div>
+                        <div class="lt-roi-row hit">
+                            <span class="lt-roi-row-label">Retorno anual</span>
+                            <b id="roi-py-ano">—</b>
+                            <b id="roi-br-ano">—</b>
+                        </div>
+                    </div>
+
+                    <div class="lt-q-msg" id="roi-msg">
+                        <i class="ph-fill ph-info" aria-hidden="true"></i>
+                        <div>
+                            <span class="es" lang="es-PY">Ingrese la cantidad de colaboradores para ver el retorno.</span>
+                            <span class="pt" lang="pt-BR">Informe a quantidade de colaboradores para ver o retorno.</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 08 · Inversión -->
+        <section class="slide" data-title="Inversión · Investimento" id="slide-8">
             <div class="slide-context-bg lt-bg">
                 <div class="lt-dots"></div>
                 <div class="lt-glow" style="width: 55vw; height: 40vw; right: -12vw; top: 15vh; background: rgba(255, 202, 40, 0.07);"></div>
@@ -543,8 +614,8 @@
             </div>
         </section>
 
-        <!-- 08 · Cotización -->
-        <section class="slide" data-title="Cotización · Cotação" id="slide-8">
+        <!-- 09 · Cotización -->
+        <section class="slide" data-title="Cotización · Cotação" id="slide-9">
             <div class="slide-context-bg lt-bg">
                 <div class="lt-floor" style="opacity: 0.6;"></div>
                 <div class="lt-glow" style="width: 55vw; height: 40vw; left: -10vw; top: 20vh; background: rgba(255, 202, 40, 0.08);"></div>
@@ -593,8 +664,8 @@
             </div>
         </section>
 
-        <!-- 09 · Cierre -->
-        <section class="slide" data-title="Cierre · Encerramento" id="slide-9">
+        <!-- 10 · Cierre -->
+        <section class="slide" data-title="Cierre · Encerramento" id="slide-10">
             <div class="slide-context-bg lt-bg">
                 <div class="lt-floor"></div>
                 <div class="lt-glow" style="width: 55vw; height: 55vw; left: -15vw; top: 10vh; background: rgba(255, 202, 40, 0.08);"></div>
@@ -743,5 +814,6 @@
     <script src="js/leads.js"></script>
     <script src="js/pricing.js"></script>
     <script src="js/quote.js"></script>
+    <script src="js/roi.js"></script>
 </body>
 </html>

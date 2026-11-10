@@ -2285,7 +2285,187 @@
     }
 }
 
-/* ---------- 07 · Quote (pulls the price registered in the pricing table) ---------- */
+/* ---------- 07 · ROI (retorno de la inversión) ---------- */
+
+.slide-content.lt-roi {
+    display: grid;
+    grid-template-columns: 36cqw 1fr;
+    align-items: center;
+    gap: 3.6cqw;
+}
+
+.lt-roi-side {
+    display: flex;
+    flex-direction: column;
+    gap: 4cqh;
+}
+
+.lt-roi-side .lt-h { font-size: calc(var(--u) * 3.6); }
+.lt-roi-side .lt-h-pt { font-size: calc(var(--u) * 1.8); }
+
+.lt-roi-in #roi-qty {
+    width: 100%;
+    font-family: 'Sansation', sans-serif;
+    font-weight: 700;
+    font-size: calc(var(--u) * 4.4);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--lt-y);
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px dashed rgba(255, 202, 40, 0.4);
+    border-radius: calc(var(--u) * 1.2);
+    padding: 1.2cqh calc(var(--u) * 1.4);
+    outline: none;
+    font-variant-numeric: tabular-nums;
+}
+
+.lt-roi-in #roi-qty::placeholder { color: rgba(255, 255, 255, 0.2); }
+
+.lt-roi-in #roi-qty:focus {
+    border-style: solid;
+    border-color: var(--lt-y);
+    box-shadow: 0 0 0 4px rgba(255, 202, 40, 0.16);
+}
+
+.lt-roi-card {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 2.4cqh;
+    padding: 3.6cqh 2.8cqw;
+    border-radius: calc(var(--u) * 1.8);
+    background: linear-gradient(165deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(255, 202, 40, 0.3);
+    box-shadow: 0 3cqh 8cqh rgba(0, 0, 0, 0.5), 0 0 7cqw rgba(255, 202, 40, 0.09);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+}
+
+.lt-roi-card::before {
+    content: '';
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    top: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--lt-y), transparent);
+}
+
+.lt-roi-hours {
+    display: flex;
+    align-items: baseline;
+    gap: calc(var(--u) * 1.4);
+    padding-bottom: 2.2cqh;
+    border-bottom: 1px solid var(--lt-line);
+}
+
+.lt-roi-hours b {
+    font-family: 'Sansation', sans-serif;
+    font-weight: 700;
+    font-size: calc(var(--u) * 4.6);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+}
+
+.lt-roi-card[data-state="empty"] .lt-roi-hours b { color: rgba(255, 255, 255, 0.2); }
+
+.lt-roi-hours-k {
+    display: flex;
+    gap: calc(var(--u) * 0.8);
+    font-size: calc(var(--u) * 1.05);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--lt-sub);
+}
+
+.lt-roi-hours-k .k-pt {
+    padding-left: calc(var(--u) * 0.8);
+    border-left: 1px solid rgba(255, 255, 255, 0.25);
+    font-weight: 500;
+    color: var(--lt-pt);
+}
+
+.lt-roi-calc {
+    display: block;
+    margin-top: 0.5cqh;
+    font-size: calc(var(--u) * 1.1);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+    font-variant-numeric: tabular-nums;
+}
+
+.lt-roi-table {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2cqh;
+}
+
+.lt-roi-row {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr;
+    align-items: center;
+    column-gap: 1.4cqw;
+    padding: 1.6cqh calc(var(--u) * 1.4);
+    border-radius: calc(var(--u) * 1.1);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--lt-line);
+}
+
+.lt-roi-row.hit {
+    border-color: rgba(255, 202, 40, 0.35);
+    background: rgba(255, 202, 40, 0.07);
+}
+
+.lt-roi-row b {
+    font-family: 'Sansation', sans-serif;
+    font-weight: 700;
+    font-size: calc(var(--u) * 2);
+    letter-spacing: -0.02em;
+    color: #fff;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.lt-roi-row.hit b { color: var(--lt-y); }
+
+.lt-roi-card[data-state="empty"] .lt-roi-row b { color: rgba(255, 255, 255, 0.2); }
+
+.lt-roi-row-label {
+    font-size: calc(var(--u) * 1.15);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.lt-roi-head {
+    background: none;
+    border: none;
+    padding: 0 calc(var(--u) * 1.4);
+}
+
+.lt-roi-head span:not(:first-child) {
+    font-size: calc(var(--u) * 1.05);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: right;
+    color: var(--lt-sub);
+}
+
+.lt-roi-card #roi-msg {
+    margin-top: 0.4cqh;
+}
+
+@media (max-width: 768px) {
+    .slide-content.lt-roi { grid-template-columns: 1fr; gap: 3cqh; }
+    .lt-roi-row { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+/* ---------- 08 · Quote (pulls the price registered in the pricing table) ---------- */
 
 .slide-content.lt-q {
     display: grid;

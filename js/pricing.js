@@ -2,7 +2,7 @@
    Preenchida à mão pelo responsável; fica salva neste navegador (localStorage). */
 (() => {
   'use strict';
-  const root = document.getElementById('slide-6');
+  const root = document.querySelector('.slide[data-title^="Inversión"]');
   if (!root) return;
 
   const KEY = 'thundera_lite_precios';
