@@ -475,8 +475,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 3cqw;
-    margin-top: 6.5cqh;
+    gap: 3.6cqw;
+    margin-top: 8cqh;
 }
 
 .lt-shock-eq > div {
@@ -488,7 +488,7 @@
 .lt-shock-eq b {
     font-family: 'Sansation', sans-serif;
     font-weight: 700;
-    font-size: calc(var(--u) * 5.4);
+    font-size: calc(var(--u) * 8.2);
     line-height: 1;
     letter-spacing: -0.03em;
     color: rgba(255, 255, 255, 0.55);
@@ -500,8 +500,8 @@
 }
 
 .lt-shock-eq .es {
-    margin-top: 1cqh;
-    font-size: calc(var(--u) * 1.3);
+    margin-top: 1.4cqh;
+    font-size: calc(var(--u) * 1.5);
     font-weight: 700;
     letter-spacing: 0.04em;
     color: #fff;
@@ -509,7 +509,7 @@
 
 .lt-shock-eq .pt {
     margin-top: 0.2cqh;
-    font-size: calc(var(--u) * 1.05);
+    font-size: calc(var(--u) * 1.2);
 }
 
 .lt-shock-eq .pt::before {
@@ -517,7 +517,7 @@
 }
 
 .lt-shock-eq > i {
-    font-size: calc(var(--u) * 2.2);
+    font-size: calc(var(--u) * 2.8);
     color: var(--lt-faint);
 }
 
